@@ -57,10 +57,6 @@ public class Person implements Serializable{
 	@Column(name = "web", length = 200)
 	private String web;
 	
-	@OneToOne
-	@JoinColumn(name="nameGr")
-	private Group Gr;
-	
 	@Basic()
 	@Column(name = "pwd", length = 50)
 	@NotNull
@@ -80,13 +76,12 @@ public class Person implements Serializable{
 	 * @param mail
 	 * @param gr
 	 */
-	public Person(int idP,String pwd, String name, String firstname, String mail, Group gr) {
+	public Person(int idP,String pwd, String name, String firstname, String mail) {
 		super();
 		this.idP = idP;
 		this.name = name;
 		this.firstname = firstname;
 		this.mail = mail;
-		this.Gr = gr;
 		this.pwd = pwd;
 	}
 	
@@ -101,7 +96,7 @@ public class Person implements Serializable{
 	 * @param web
 	 * @param gr
 	 */
-	public Person(int idP,String pwd, String name, String firstname, String birth, String mail, String web, Group gr) {
+	public Person(int idP,String pwd, String name, String firstname, String birth, String mail, String web) {
 		super();
 		this.idP = idP;
 		this.name = name;
@@ -109,7 +104,6 @@ public class Person implements Serializable{
 		this.birth = birth;
 		this.mail = mail;
 		this.web = web;
-		this.Gr = gr;
 		this.pwd = pwd;
 	}
 
@@ -209,22 +203,6 @@ public class Person implements Serializable{
 		this.web = web;
 	}
 	
-	/**
-	 * returns the group in which the person is
-	 * @return Group Gr
-	 */
-	public Group getGr() {
-		return Gr;
-	}
-	
-	/**
-	 * assigns a group to a person
-	 * @param gr
-	 */
-	public void setGr(Group gr) {
-		this.Gr = gr;
-	}
-	
 	public String getPwd() {
 		return pwd;
 	}
@@ -247,7 +225,6 @@ public class Person implements Serializable{
 		this.birth = null;
 		this.mail = null;
 		this.web = null;
-		this.Gr = null;
 		this.pwd = null;
 	}
 	
@@ -261,7 +238,6 @@ public class Person implements Serializable{
 		this.birth = p.getBirth();
 		this.mail = p.getMail();
 		this.web = p.getWeb();
-		this.Gr = p.getGr();
 		this.pwd = p.getPwd();
 	}
 }
