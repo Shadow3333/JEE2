@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -18,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 
- * @author Frederic and Livia
+ * @author Frederic and 
  *
  */
 @Entity(name = "Person")
@@ -49,19 +47,16 @@ public class Person implements Serializable{
 	@Basic(optional = false)
 	@Column(name = "mail", length = 200,
 	        nullable = false, unique = true)
-	@NotNull
-	@Size(min = 1, message = "Le mail est obligatoire")
 	private String mail;
 	
 	@Basic()
 	@Column(name = "web", length = 200)
 	private String web;
 	
-	@Basic()
-	@Column(name = "pwd", length = 50)
-	@NotNull
-	@Size(min = 1, message = "Le password est obligatoire")
-	private String pwd;
+	@OneToOne
+	@JoinColumn(name="numCV")
+	@Basic(optional = false)
+	private CV cv;
 	
 	public Person() {
 		super();
@@ -70,33 +65,29 @@ public class Person implements Serializable{
 	/**
 	 * constructor
 	 * @param idP
-	 * @param pwd
 	 * @param name
 	 * @param firstname
 	 * @param mail
-	 * @param gr
 	 */
-	public Person(int idP,String pwd, String name, String firstname, String mail) {
+	public Person(int idP, String name, String firstname, String mail) {
 		super();
 		this.idP = idP;
 		this.name = name;
 		this.firstname = firstname;
 		this.mail = mail;
-		this.pwd = pwd;
+		this.cv = new CV();
 	}
 	
 	/**
 	 * constructor
 	 * @param idP
-	 * @param pwd
 	 * @param name
 	 * @param firstname
 	 * @param birth
 	 * @param mail
 	 * @param web
-	 * @param gr
 	 */
-	public Person(int idP,String pwd, String name, String firstname, String birth, String mail, String web) {
+	public Person(int idP, String name, String firstname, String birth, String mail, String web, CV cv) {
 		super();
 		this.idP = idP;
 		this.name = name;
@@ -104,7 +95,7 @@ public class Person implements Serializable{
 		this.birth = birth;
 		this.mail = mail;
 		this.web = web;
-		this.pwd = pwd;
+		this.cv = cv;
 	}
 
 	/**
@@ -203,18 +194,6 @@ public class Person implements Serializable{
 		this.web = web;
 	}
 	
-	public String getPwd() {
-		return pwd;
-	}
-
-	/**
-	 * returns the password of a person
-	 * @return String pwd
-	 */
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-	
 	/**
 	 * resets all information about a person in the database
 	 */
@@ -225,7 +204,6 @@ public class Person implements Serializable{
 		this.birth = null;
 		this.mail = null;
 		this.web = null;
-		this.pwd = null;
 	}
 	
 	/**
@@ -238,6 +216,15 @@ public class Person implements Serializable{
 		this.birth = p.getBirth();
 		this.mail = p.getMail();
 		this.web = p.getWeb();
-		this.pwd = p.getPwd();
 	}
+
+	public CV getCv() {
+		return cv;
+	}
+
+	public void setCv(CV cv) {
+		this.cv = cv;
+	}
+	
+	
 }

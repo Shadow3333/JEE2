@@ -12,7 +12,7 @@ import springapp.model.Person;
 
 /**
  * 
- * @author Frederic and Livia
+ * @author Frederic and 
  *
  */
 public class PersonDAO implements IPersonDAO{
@@ -38,27 +38,6 @@ public class PersonDAO implements IPersonDAO{
 		if (emf != null) {
 			emf.close();
 		}
-	}
-	
-	/**
-	 * finds a person using her group
-	 */
-	public List<Person> findByGroup(String nameGr) {
-		
-		start();
-		try {
-			TypedQuery<Person> q = em.createQuery("FROM Person where nameGr = '" + nameGr+"'", Person.class);
-			return q.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (em != null) {
-				end();
-			}
-		}
-		end();
-		return null;
 	}
 	
 	/**
@@ -121,72 +100,5 @@ public class PersonDAO implements IPersonDAO{
 			}
 		}
 	}
-	
-	public Person auth(String mail, String pwd)
-	{
-		start();
-		try {
-			TypedQuery<Person> q = em.createQuery("SELECT P FROM Person P WHERE mail = '" + mail + 
-					                     "' AND pwd = '" + pwd + "'", Person.class);
-			if (q != null) {
-				if (q.getResultList().isEmpty()) {
-					return null;					
-				}
-				return q.getSingleResult();
-			}
-			return null;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (em != null) {
-				end();
-			}
-		}
-		return null;
-	}
-
-	public Boolean checkMail(String mail) {
-		start();
-		try {
-			TypedQuery<Person> q = em.createQuery("FROM Person WHERE mail = '" + mail+"'", Person.class);
-			if (q != null) {
-				if (q.getResultList().isEmpty()) {
-					return false;					
-				}
-				return true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (em != null) {
-				end();
-			}
-		}
-		return null;
-	}
-
-	public Person findByMail(String mail) {
-		start();
-		try {
-			TypedQuery<Person> q = em.createQuery("FROM Person WHERE mail = '" + mail+"'", Person.class);
-			if (q != null) {
-				if (q.getResultList().isEmpty()) {
-					return null;					
-				}
-				return q.getSingleResult();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (em != null) {
-				end();
-			}
-		}
-		return null;
-	}
-	
 	
 }

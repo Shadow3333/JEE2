@@ -7,8 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="Activities")
-public class Activities implements Serializable {
+@Entity(name="Activitie")
+public class Activitie implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -31,17 +31,17 @@ public class Activities implements Serializable {
 	
 	private String web;
 	
-	public Activities() {
+	public Activitie() {
 		super();
 	}
-	public Activities(String idActiv, String year, String nature, String titre) {
+	public Activitie(String idActiv, String year, String nature, String titre) {
 		super();
 		this.idActiv = idActiv;
 		this.year = year;
 		this.nature = nature;
 		this.titre = titre;
 	}
-	public Activities(String idActiv, String year, String nature, String titre, String description, String web) {
+	public Activitie(String idActiv, String year, String nature, String titre, String description, String web) {
 		super();
 		this.idActiv = idActiv;
 		this.year = year;
