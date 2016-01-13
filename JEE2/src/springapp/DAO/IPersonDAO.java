@@ -4,7 +4,7 @@ import springapp.model.Person;
 
 /**
  * 
- * @author Frederic and 
+ * @author Frederic and Mariana
  *
  */
 public interface IPersonDAO {

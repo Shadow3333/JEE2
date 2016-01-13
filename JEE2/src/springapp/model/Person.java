@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 
- * @author Frederic and 
+ * @author Frederic and Mariana
  *
  */
 @Entity(name = "Person")

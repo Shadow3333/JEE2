@@ -1,16 +1,16 @@
 package springapp.DAO;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
-
 import springapp.model.CV;
-import springapp.model.Person;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 public class CVDAO implements ICVDAO{
 
 	private static EntityManagerFactory emf;
