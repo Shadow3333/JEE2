@@ -1,4 +1,4 @@
-package springapp.DAO;
+package springapp.services;
 
 import springapp.model.Person;
 
@@ -7,7 +7,7 @@ import springapp.model.Person;
  * @author Frederic and Mariana
  *
  */
-public interface IPersonDAO {
+public interface IPersonEJB {
 
    // lire une personne
 	public Person findPerson(Integer id);

@@ -1,4 +1,4 @@
-package springapp.DAO;
+package springapp.services;
 
 import springapp.model.CV;
 
@@ -7,6 +7,6 @@ import springapp.model.CV;
  * @author Frederic and Mariana
  *
  */
-public interface ICVDAO {
+public interface ICVEJB {
 	public void saveCV(CV cv);
 }
