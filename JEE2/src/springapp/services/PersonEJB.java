@@ -23,9 +23,9 @@ public class PersonEJB implements IPersonEJB{
 	/**
 	 * finds a person by id
 	 */
-	public Person findPerson(Integer id) {
+	public Person findPerson(String mail) {
 		try {
-			return em.find(Person.class, id);
+			return em.find(Person.class, mail);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -10,7 +10,7 @@ import springapp.model.Person;
 public interface IPersonEJB {
 
    // lire une personne
-	public Person findPerson(Integer id);
+	public Person findPerson(String mail);
 	
 	// modification ou ajout d'une nouvelle personne
 	public void savePerson(Person p);

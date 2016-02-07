@@ -3,8 +3,8 @@ package springapp.services;
 import javax.ejb.Remote;
 
 @Remote
-public interface ConnectedUser {
-   void login(String login, String pwd);
+public interface Authenticator {
+   boolean login(String mail, String pwd);
 
    void logout();
 }

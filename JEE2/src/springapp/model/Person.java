@@ -25,11 +25,13 @@ import org.springframework.stereotype.Component;
 public class Person implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
-	@Id()
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idP;
 	
+	@Id()
+	@Basic(optional = false)
+	@Column(name = "mail", length = 200,
+	nullable = false, unique = true)
+	private String mail;
+
 	@Basic(optional = false)
     @Column(name = "name", length = 200,
             nullable = false)
@@ -43,11 +45,6 @@ public class Person implements Serializable{
 	@Basic()
 	@Column(name = "birth_day")
 	private String birth;
-	
-	@Basic(optional = false)
-	@Column(name = "mail", length = 200,
-	        nullable = false, unique = true)
-	private String mail;
 	
 	@Basic()
 	@Column(name = "web", length = 200)
@@ -69,9 +66,8 @@ public class Person implements Serializable{
 	 * @param firstname
 	 * @param mail
 	 */
-	public Person(int idP, String name, String firstname, String mail) {
+	public Person(String name, String firstname, String mail) {
 		super();
-		this.idP = idP;
 		this.name = name;
 		this.firstname = firstname;
 		this.mail = mail;
@@ -87,31 +83,14 @@ public class Person implements Serializable{
 	 * @param mail
 	 * @param web
 	 */
-	public Person(int idP, String name, String firstname, String birth, String mail, String web, CV cv) {
+	public Person(String name, String firstname, String birth, String mail, String web, CV cv) {
 		super();
-		this.idP = idP;
 		this.name = name;
 		this.firstname = firstname;
 		this.birth = birth;
 		this.mail = mail;
 		this.web = web;
 		this.cv = cv;
-	}
-
-	/**
-	 * returns the id called idP of a person
-	 * @return int idP
-	 */
-	public Integer getIdP() {
-		return idP;
-	}
-	
-	/**
-	 * sets the id of a person
-	 * @param idP
-	 */
-	public void setIdP(int idP) {
-		this.idP = idP;
 	}
 	
 	/**
@@ -198,7 +177,6 @@ public class Person implements Serializable{
 	 * resets all information about a person in the database
 	 */
 	public void reset() {
-		this.idP = null;
 		this.name = null;
 		this.firstname = null;
 		this.birth = null;
@@ -210,7 +188,6 @@ public class Person implements Serializable{
 	 * creates a copy of a person already in the database
 	 */
 	public void copy(Person p) {
-		this.idP = p.getIdP();
 		this.name = p.getName();
 		this.firstname = p.getFirstname();
 		this.birth = p.getBirth();
