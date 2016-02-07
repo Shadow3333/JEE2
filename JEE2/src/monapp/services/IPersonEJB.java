@@ -1,6 +1,6 @@
-package springapp.services;
+package monapp.services;
 
-import springapp.model.Person;
+import monapp.model.Person;
 
 /**
  * 

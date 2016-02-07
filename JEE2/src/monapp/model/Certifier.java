@@ -1,4 +1,4 @@
-package springapp.model;
+package monapp.model;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import springapp.services.Authenticator;
-import springapp.services.PersonEJB;
+import monapp.services.Authenticator;
+import monapp.services.PersonEJB;
 
 @Stateful(name="Certifier")
 public class Certifier implements Authenticator {

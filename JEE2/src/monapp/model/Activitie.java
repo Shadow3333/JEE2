@@ -1,4 +1,4 @@
-package springapp.model;
+package monapp.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package springapp.services;
+package monapp.services;
 
 import javax.ejb.Remote;
 

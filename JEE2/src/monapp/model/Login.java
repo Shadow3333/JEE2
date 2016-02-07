@@ -1,4 +1,4 @@
-package springapp.model;
+package monapp.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

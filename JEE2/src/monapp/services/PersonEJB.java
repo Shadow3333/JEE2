@@ -1,11 +1,11 @@
-package springapp.services;
+package monapp.services;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import springapp.model.Person;
+import monapp.model.Person;
 
 /**
  * 
