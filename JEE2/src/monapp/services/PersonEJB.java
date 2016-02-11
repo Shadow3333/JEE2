@@ -17,7 +17,7 @@ import monapp.model.Person;
 @Local
 public class PersonEJB implements IPersonEJB{
 
-	@PersistenceContext(unitName = "h2")
+	@PersistenceContext(unitName = "Annuaire")
 	private static EntityManager em;
 	
 	/**
