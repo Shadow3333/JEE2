@@ -12,7 +12,7 @@ import javax.persistence.Id;
  * @author Frederic and Mariana
  *
  */
-@Entity(name="Activitie")
+@Entity
 public class Activitie implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

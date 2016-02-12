@@ -13,12 +13,11 @@ import monapp.model.Person;
  *
  */
 
-@Stateless(name = "personEJB")
-@Local
-public class PersonEJB implements IPersonEJB{
+@Stateless
+public class PersonEJB {
 
 	@PersistenceContext(unitName = "Jee2BD")
-	private static EntityManager em;
+	private EntityManager em;
 	
 	/**
 	 * finds a person by id
@@ -37,7 +36,8 @@ public class PersonEJB implements IPersonEJB{
 	 */
 	public void savePerson(Person p) {
 		try {
-			em.merge(p);
+			System.out.println(p.getFirstname()+ " , nom :"+ p.getName() + " , mail :"+p.getMail());
+			em.persist(p);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

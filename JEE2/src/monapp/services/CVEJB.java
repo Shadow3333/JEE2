@@ -15,16 +15,16 @@ import monapp.model.Person;
  * @author Frederic and Mariana
  *
  */
-@Stateless(name = "cvEJB")
+@Stateless
 @Local
-public class CVEJB implements ICVEJB{
+public class CVEJB{
 
 	@PersistenceContext(unitName = "Jee2BD")
-	private static EntityManager em;
+	private EntityManager em;
 	
 	public void saveCV(CV cv) {
 		try {
-			em.merge(cv);
+			em.persist(cv);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

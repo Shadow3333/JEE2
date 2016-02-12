@@ -44,7 +44,6 @@ public class Person implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name="numCV")
-	@Basic(optional = false)
 	private CV cv;
 	
 	public Person() {
@@ -58,12 +57,12 @@ public class Person implements Serializable{
 	 * @param firstname
 	 * @param mail
 	 */
-	public Person(String name, String firstname, String mail) {
+	public Person(String name, String firstname, String mail, CV cv) {
 		super();
 		this.name = name;
 		this.firstname = firstname;
 		this.mail = mail;
-		this.cv = new CV();
+		this.cv = cv;
 	}
 	
 	/**

@@ -17,13 +17,13 @@ import javax.persistence.OneToMany;
  * @author Frederic and Mariana
  *
  */
-@Entity(name="CV")
+@Entity
 public class CV implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id()
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Basic(optional = false)
 	@Column(name = "numCV", length = 200,
 	        nullable = false)
@@ -36,6 +36,12 @@ public class CV implements Serializable {
 	public CV() {
 		super();
 	}
+
+	public CV(String numCV) {
+		super();
+		this.numCV = numCV;
+	}
+	
 
 	public CV(String numCV, Set<Activitie> activities) {
 		super();
