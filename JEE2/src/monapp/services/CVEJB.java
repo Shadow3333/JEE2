@@ -19,7 +19,7 @@ import monapp.model.Person;
 @Local
 public class CVEJB implements ICVEJB{
 
-	@PersistenceContext(unitName = "Annuaire")
+	@PersistenceContext(unitName = "Jee2BD")
 	private static EntityManager em;
 	
 	public void saveCV(CV cv) {

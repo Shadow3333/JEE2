@@ -4,15 +4,9 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -20,8 +14,6 @@ import org.springframework.stereotype.Component;
  *
  */
 @Entity(name = "Person")
-@Component()
-@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Person implements Serializable{
 
 	private static final long serialVersionUID = 1L;

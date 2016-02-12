@@ -7,7 +7,7 @@
 
 
     <!-- Configuration de l'application -->
-    <application>
+   <!--  <application>
         <resource-bundle>
             <base-name>monapp.resources.messages</base-name>
             <var>messages</var>
@@ -33,7 +33,7 @@
 
 	<lifecycle>
         <phase-listener>monapp.MyPhaseListener</phase-listener>
-    </lifecycle>
+    </lifecycle> -->
 
 </faces-config>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openejb>
-	<Resource id="test" type="DataSource">
+	<Resource id="Jee2BD" type="DataSource">
 		JdbcDriver com.mysql.jdbc.Driver
-		JdbcUrl jdbc:mysql://localhost:3306/test
+		JdbcUrl jdbc:mysql://localhost:3306/Jee2BD
 		UserName root
 		Password
 		JtaManaged true

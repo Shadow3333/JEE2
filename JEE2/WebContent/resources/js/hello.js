@@ -1,0 +1,1 @@
+alert('en cliquant sur ok, vous adhérez à la confédération des chats de la force !');

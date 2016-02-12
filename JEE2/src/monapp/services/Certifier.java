@@ -1,4 +1,4 @@
-package monapp.model;
+package monapp.services;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -9,8 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import monapp.services.Authenticator;
-import monapp.services.PersonEJB;
+import monapp.model.Login;
 
 @Stateful(name="Certifier")
 public class Certifier implements Authenticator {
@@ -18,7 +17,7 @@ public class Certifier implements Authenticator {
 	@EJB
 	private PersonEJB Pers;
 	
-	@PersistenceContext
+	@PersistenceContext(unitName = "Jee2BD")
 	private static EntityManager em;
 	
 	@PostConstruct
