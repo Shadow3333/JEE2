@@ -1,7 +1,10 @@
 package monapp.tests;
 
+import static org.junit.Assert.*;
+
 import java.util.Set;
 
+import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
 

@@ -18,7 +18,8 @@ public class Person implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	@Id()
+	@Basic(optional = false)
 	@Column(name = "mail", length = 200,
 	nullable = false, unique = true)
 	private String mail;

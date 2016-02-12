@@ -11,8 +11,8 @@ import javax.persistence.TypedQuery;
 
 import monapp.model.Login;
 
-@Stateful(name="Certifier")
-public class Certifier implements Authenticator {
+@Stateful(name="ConnectedUser")
+public class ConnectedUser implements IAuthenticator {
 	
 	@EJB
 	private PersonEJB Pers;

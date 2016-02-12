@@ -1,17 +1,22 @@
 package monapp.model;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "login")
+@Entity(name = "Login")
 public class Login {
 
-	@Id
-    @Column(name = "mail", length = 200)
+	@Id()
+	@Basic(optional = false)
+    @Column(name = "mail", length = 200,
+            nullable = false)
 	private String mail;
 	
-    @Column(name = "password", length = 200)
+	@Basic(optional = false)
+    @Column(name = "pwd", length = 200,
+            nullable = false)
 	private String pwd;
 
 	public String getMail() {
