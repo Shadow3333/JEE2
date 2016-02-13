@@ -49,9 +49,11 @@ public class PersonEJBTest {
     }
 
 	@Test
-	@Ignore
 	public void testFindPerson() {
-		assertNotNull(personEjb.findPerson("john@gmail.com"));
+		CV cv = new CV();
+		person1 = new Person("Smithbl", "johnbl", "bla@gmail.com", cv);
+		personEjb.savePerson(person1);
+		assertNotNull(personEjb.findPerson("bla@gmail.com"));
 	}
 
 	@Test
@@ -62,9 +64,12 @@ public class PersonEJBTest {
 	}
 
 	@Test
-	@Ignore
 	public void testRemove() {
-		fail("Not yet implemented");
+		CV cv = new CV();
+		person1 = new Person("SmithRem", "johnRem", "Rem@gmail.com", cv);
+		personEjb.savePerson(person1);
+		Person personDe = personEjb.findPerson("Rem@gmail.com");
+		personEjb.remove(personDe);
 	}
 
 }

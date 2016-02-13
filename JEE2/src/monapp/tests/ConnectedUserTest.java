@@ -12,7 +12,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import monapp.model.Login;
-import monapp.services.CVEJB;
 import monapp.services.ConnectedUser;
 import javax.naming.Context;
 
@@ -43,31 +42,43 @@ public class ConnectedUserTest {
     }
 
 	@Test
-	@Ignore
 	public void testConstruct() {
 		connectedUser.construct();
 	}
 
 	@Test
-	@Ignore
 	public void testLogin() {
-		fail("Not yet implemented");
+		connectedUser.addLogin("mailLog@mail.fr", "aze");
+		boolean bool = connectedUser.login("mailLog@mail.fr", "aze");
+		assertTrue(bool);
+	}
+	
+	@Test
+	@Ignore
+	public void testLoginFail() {
+		connectedUser.addLogin("mailFail@mail.fr", "aze");
+		boolean bool = connectedUser.login("mailFail@mail.fr", "ae");
+		assertFalse(bool);
 	}
 
 	@Test
 	@Ignore
 	public void testLogout() {
+		connectedUser.addLogin("mailLogOut@mail.fr", "aze");
+		connectedUser.login("mailLogOut@mail.fr", "aze");
 		connectedUser.logout();
 	}
 
 	@Test
 	@Ignore
 	public void testAddLogin() {
-		connectedUser.addLogin("mail@mail.fr", "aze");
+		connectedUser.addLogin("mailAdd@mail.fr", "aze");
 	}
 
 	@Test
+	@Ignore
 	public void testFindLogin() {
+		connectedUser.addLogin("mail@mail.fr", "aze");
 		Login findLogin =  connectedUser.findLogin("mail@mail.fr");
 		assertEquals(login.getMail(), findLogin.getMail());
 		assertEquals(login.getPassword(), findLogin.getPassword());

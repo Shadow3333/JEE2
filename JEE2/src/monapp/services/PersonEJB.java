@@ -50,7 +50,7 @@ public class PersonEJB {
 	public void remove(Person p)
 	{
 		try {
-			em.remove(p);
+			em.remove(em.contains(p) ? p : em.merge(p));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
