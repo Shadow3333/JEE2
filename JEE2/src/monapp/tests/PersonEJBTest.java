@@ -20,7 +20,6 @@ public class PersonEJBTest {
 	
 	private static EJBContainer ejbContainer;
 	private static PersonEJB personEjb;
-	private static CVEJB cvEjb;
 	private static Person person1;
 	
 	@BeforeClass
@@ -40,8 +39,6 @@ public class PersonEJBTest {
 		Object object2 = ejbContainer.getContext().lookup("java:global/JEE2/CVEJB");
 		
 		assertTrue(object2 instanceof CVEJB);
-		
-		cvEjb = (CVEJB) object2;
 	}
 
 	@AfterClass
@@ -60,7 +57,6 @@ public class PersonEJBTest {
 	@Test
 	public void testSavePerson() {
 		CV cv = new CV();
-		cvEjb.saveCV(cv);
 		person1 = new Person("Smith", "john", "john@gmail.com", cv);
 		personEjb.savePerson(person1);
 	}
