@@ -60,10 +60,10 @@ public class PersonEJBTest {
 
 	@Test
 	public void testSavePerson() {
-		CV cv = new CV("1");
+		CV cv = new CV();
 		cvEjb.saveCV(cv);
-//		person1 = new Person("Smith", "john", "john@gmail.com", cv);
-//		personEjb.savePerson(person1);
+		person1 = new Person("Smith", "john", "john@gmail.com", cv);
+		personEjb.savePerson(person1);
 	}
 
 	@Test

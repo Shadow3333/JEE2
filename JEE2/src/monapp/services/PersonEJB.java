@@ -36,8 +36,7 @@ public class PersonEJB {
 	 */
 	public void savePerson(Person p) {
 		try {
-			System.out.println(p.getFirstname()+ " , nom :"+ p.getName() + " , mail :"+p.getMail());
-			em.persist(p);
+			em.merge(p);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

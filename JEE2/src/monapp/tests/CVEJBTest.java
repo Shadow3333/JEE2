@@ -2,15 +2,19 @@ package monapp.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
+import javax.validation.constraints.AssertTrue;
 
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import monapp.model.Activitie;
@@ -24,16 +28,16 @@ public class CVEJBTest {
 	private static CV cv;
 	private static Activitie act1;
 	private static Activitie act2;
-	private static Set<Activitie> activities;
+	private static List<Activitie> activities;
 	
 	@BeforeClass
 	public static void init(){
 		ejbContainer = EJBContainer.createEJBContainer();
-		act1 = new Activitie("act1", "2010", "nature 1", "titre 1");
-		act2 = new Activitie("act2", "2010", "nature 2", "titre 2");
+		activities = new ArrayList<>();
+		act1 = new Activitie("2010", "nature 1", "titre 1");
+		act2 = new Activitie("2010", "nature 2", "titre 2");
 		activities.add(act1);
 		activities.add(act2);
-		cv = new CV("cv1", activities);
 	}
 	
 	@Before
@@ -48,9 +52,31 @@ public class CVEJBTest {
         }
     }
 	
+	@Ignore
 	@Test
-	public void testSaveCV() {
+	public void testaddCV() 
+	{
+		cv = new CV();
+		cvEjb.addCV(cv);
+	}
+	
+	@Test
+	public void testSaveCVwithActivities()
+	{
+		cv = new CV();
+		cvEjb.saveActivitie(act1);
+		cv.addActivitie(act1);
+//		cvEjb.addCV(cv);
+//		cv.setActivities(activities);
 		cvEjb.saveCV(cv);
+	}
+	
+	@Ignore
+	@Test
+	public void testGetCVs() {
+		List<CV> l = cvEjb.getCVs();
+		assertNotNull(l);
+		assertTrue(l.contains(cv));
 	}
 
 }
