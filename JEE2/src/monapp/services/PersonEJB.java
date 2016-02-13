@@ -14,6 +14,7 @@ import monapp.model.Person;
  */
 
 @Stateless
+@Local
 public class PersonEJB {
 
 	@PersistenceContext(unitName = "Jee2BD")

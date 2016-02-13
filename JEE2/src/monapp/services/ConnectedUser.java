@@ -17,7 +17,7 @@ public class ConnectedUser {
 	private PersonEJB Pers;
 	
 	@PersistenceContext(unitName = "Jee2BD")
-	private static EntityManager em;
+	private EntityManager em;
 	
 	@PostConstruct
 	public void construct()

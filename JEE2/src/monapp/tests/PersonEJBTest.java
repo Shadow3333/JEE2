@@ -54,8 +54,7 @@ public class PersonEJBTest {
 	@Test
 	@Ignore
 	public void testFindPerson() {
-		fail("Not yet implemented");
-		//assertNotNull(personEjb.findPerson("john@gmail.com"));
+		assertNotNull(personEjb.findPerson("john@gmail.com"));
 	}
 
 	@Test
