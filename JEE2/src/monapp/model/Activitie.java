@@ -93,5 +93,14 @@ public class Activitie implements Serializable {
 		this.web = web;
 	}
 	
+	public void cleanActivitie()
+	{
+		year = null;
+		nature  = null;
+		titre  = null;
+		description  = null;
+		web  = null;
+	}
+	
 
 }
