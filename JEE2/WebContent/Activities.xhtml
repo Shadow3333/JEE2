@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+	<ui:define name="content">
+
+		<h2>CRUD in AJAX</h2>
+		<h:form>
+			<h:panelGroup rendered="#{ajaxBean.activities.size() > 0}">
+				<p>Activities :</p>
+				<ul>
+					<ui:repeat var="activ" varStatus="s" value="#{ajaxBean.activities}">
+						<li>
+							Activitie :
+							<p>Titre = <h:outputText value="#{activ.titre}" /></p>
+							<p>Description = <h:outputText value="#{activ.description}" /></p>
+							<p>Year = <h:outputText value="#{activ.year}" /></p>
+							<p>Web = <h:outputText value="#{activ.web}" /></p>
+						</li>
+					</ui:repeat>
+				</ul>
+			</h:panelGroup>
+			<div>
+				<p>Titre :</p>
+				<h:inputText id="titre" value="#{ajaxBean.activ.titre}">
+					<f:validateLength minimum="3" maximum="8" />
+				</h:inputText>
+				<h:message id="messageTitre" for="titre" />
+			</div>
+			<div>
+				<p>Description :</p>
+				<h:inputText id="description" value="#{ajaxBean.activ.description}"/>
+				<h:message id="messageDescription" for="description" />
+			</div>
+			<div>
+				<p>Year :</p>
+				<h:inputText id="year" value="#{ajaxBean.activ.year}"/>
+				<h:message id="messageYear" for="year" />
+			</div>
+			<div>
+				<p>Web :</p>
+				<h:inputText id="web" value="#{ajaxBean.activ.web}"/>
+				<h:message id="messageWeb" for="web" />
+			</div>
+			<br />
+			<h:commandButton value="Add" action="#{ajaxBean.addActivities()}">
+				<!-- <f:ajax execute="@this titre" render="@form" />
+				<f:ajax execute="@this description" render="@form" /> -->
+			</h:commandButton>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,4 +1,4 @@
-package monapp.manager;
+package monapp.Ajax;
 
 import java.io.Serializable;
 import java.util.ArrayList;

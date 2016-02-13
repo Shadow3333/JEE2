@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/mylayout.xhtml">
+	<ui:define name="content">
+
+		<h1>Authentification</h1>
+		<h:form id="Authentification">
+
+				<h3><h:outputText value="Mail&#160;:" /></h3>
+				<div>
+					<h:inputText id="mail" value="#{LoginControler.mail}" required="true">
+						<f:validateRegex pattern="^[a-z.0-9]+[a-z._0-9]+@[a-z]+[.]{1}[a-z]+$" />
+					</h:inputText>
+					<h:message errorClass="error" for="mail" />
+				</div>
+				<h3><h:outputText value="Password&#160;:" /></h3>
+				<div>
+					<h:inputText id="pwd" value="#{LoginControler.pwd}" required="true"/>
+					<h:message errorClass="error" for="pwd" />
+				</div>
+				<br/>
+				<h:commandButton value="Submit" action="#{LoginControler.submit}"/>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
