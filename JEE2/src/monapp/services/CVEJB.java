@@ -26,10 +26,6 @@ public class CVEJB{
 	
 	public void saveActivitie(Activitie activ) {
 		try {
-//			for (Activitie activ : cv.getActivities()) {
-//				em.merge(activ);
-//				System.out.println("saved activitie " + activ.getTitre());
-//			}
 			em.merge(activ);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,10 +34,6 @@ public class CVEJB{
 	
 	public void saveCV(CV cv) {
 		try {
-//			for (Activitie activ : cv.getActivities()) {
-//				em.merge(activ);
-//				System.out.println("saved activitie " + activ.getTitre());
-//			}
 			em.merge(cv);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +42,6 @@ public class CVEJB{
 	
 	public void addCV(CV cv) {
 		try {
-			cv.setActivities(new ArrayList<Activitie>());
 			em.persist(cv);
 		} catch (Exception e) {
 			e.printStackTrace();

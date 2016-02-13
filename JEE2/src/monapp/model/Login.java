@@ -19,6 +19,16 @@ public class Login {
             nullable = false)
 	private String pwd;
 
+	public Login() {
+		super();
+	}
+
+	public Login(String mail, String pwd) {
+		super();
+		this.mail = mail;
+		this.pwd = pwd;
+	}
+
 	public String getMail() {
 		return mail;
 	}

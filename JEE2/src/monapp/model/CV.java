@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,8 +32,8 @@ public class CV implements Serializable {
 	        nullable = false)
 	int numCV;
 
-	@OneToMany
-	@JoinColumn(name="refActiv")
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="refCV")
     private List<Activitie> activities;
 
 	public CV() {

@@ -4,17 +4,11 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import javax.ejb.EJB;
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
-import javax.validation.constraints.AssertTrue;
-
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import monapp.model.Activitie;
@@ -52,7 +46,6 @@ public class CVEJBTest {
         }
     }
 	
-	@Ignore
 	@Test
 	public void testaddCV() 
 	{
@@ -64,19 +57,14 @@ public class CVEJBTest {
 	public void testSaveCVwithActivities()
 	{
 		cv = new CV();
-		cvEjb.saveActivitie(act1);
-		cv.addActivitie(act1);
-//		cvEjb.addCV(cv);
-//		cv.setActivities(activities);
+		cv.setActivities(activities);
 		cvEjb.saveCV(cv);
 	}
 	
-	@Ignore
 	@Test
 	public void testGetCVs() {
 		List<CV> l = cvEjb.getCVs();
 		assertNotNull(l);
-		assertTrue(l.contains(cv));
 	}
 
 }

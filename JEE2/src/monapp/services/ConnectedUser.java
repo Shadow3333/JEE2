@@ -1,7 +1,6 @@
 package monapp.services;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
@@ -12,7 +11,7 @@ import javax.persistence.TypedQuery;
 import monapp.model.Login;
 
 @Stateful(name="ConnectedUser")
-public class ConnectedUser implements IAuthenticator {
+public class ConnectedUser {
 	
 	@EJB
 	private PersonEJB Pers;
@@ -41,5 +40,24 @@ public class ConnectedUser implements IAuthenticator {
 	public void logout() {
 		System.out.println("logout");
 	}
+	
+	public void addLogin(String mail, String pwd)
+	{
+		Login logs = new Login(mail, pwd);
+		em.merge(logs);
+	}
+	
+	public Login findLogin(String mail)
+	{
+		TypedQuery<Login> q = em.createQuery("FROM Login where mail = '" + mail+"'", Login.class);
+		return q.getSingleResult();
+		
+	}
 
+	public void removeLogin(String mail)
+	{
+		Login logs = findLogin(mail);
+		em.remove(logs);
+	}
+	
 }
