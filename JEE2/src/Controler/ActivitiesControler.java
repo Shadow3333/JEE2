@@ -1,4 +1,4 @@
-package monapp.Ajax;
+package Controler;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import monapp.model.Activitie;
 
 @ManagedBean
 @ViewScoped
-public class AjaxBean implements Serializable {
+public class ActivitiesControler implements Serializable {
 
     private static final long serialVersionUID = 5443351151396868724L;
 
@@ -35,7 +35,7 @@ public class AjaxBean implements Serializable {
         activities.remove(index);
     }
 
-    public AjaxBean() {
+    public ActivitiesControler() {
     }
 
     public Activitie getActiv() {

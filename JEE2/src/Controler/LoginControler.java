@@ -1,7 +1,9 @@
 package Controler;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import monapp.services.ConnectedUser;
 
 @ManagedBean(name = "LoginControler")
 @SessionScoped
@@ -9,9 +11,18 @@ public class LoginControler {
 
     private String mail = "";
     private String pwd = "";
+    @EJB
+    ConnectedUser ejbUser;
+//    InMemoryCVThèque manager;
 
+    
     public String submit() {
-        System.out.println("LOG: Submit");
+    	boolean testlogs = ejbUser.login(mail, pwd);
+    	if (testlogs) {
+    		return "hello";
+		}
+    	else
+    		System.out.println("nop");
         return null;
     }
     
