@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import monapp.model.Activitie;
+import monapp.model.CV;
 import monapp.model.Login;
 import monapp.model.Person;
 
@@ -63,6 +65,16 @@ public class ConnectedUser {
 	public static Person getCurrUser()
 	{
 		return person;
+	}
+	
+	public void addActivitie(Activitie activ) {
+		try {
+			CV cv = person.getCv();
+			cv.addActivitie(activ);
+			em.persist(em.merge(cv));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

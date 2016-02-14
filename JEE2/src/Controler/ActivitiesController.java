@@ -7,9 +7,13 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
 import monapp.model.Activitie;
+import monapp.model.Person;
 import monapp.services.CVEJB;
 import monapp.services.ConnectedUser;
+import monapp.services.PersonEJB;
+import monapp.utilitaire.nature;
 
 @ManagedBean
 @ViewScoped
@@ -21,15 +25,13 @@ public class ActivitiesController implements Serializable {
     List<Activitie> activities = new ArrayList<Activitie>();
     @EJB
     ConnectedUser ejbUser;
-    @EJB
-    CVEJB ejbCV;
     
     public ActivitiesController() {
     }
     
     public List<Activitie> creatListActivities()
     {
-    	activities = ConnectedUser.getCurrUser().getCv().getActivities();
+    	//activities = ConnectedUser.getCurrUser().getCv().getActivities();
     	return activities;
     }
     
@@ -43,9 +45,17 @@ public class ActivitiesController implements Serializable {
 
     public void addActivities() {
     	activities.add(activ);
-//    	ConnectedUser.getCurrUser().getCv().addActivitie(activ);
-//    	ejbCV.saveCV(ConnectedUser.getCurrUser().getCv());
+    	ejbUser.addActivitie(activ);
         activ = new Activitie();
+    }
+    
+    public List<String> getNatures()
+    {
+    	List<String> myList = new ArrayList<String>();
+    	for (nature nature : nature.values()) {
+			myList.add(nature.toString());
+		}
+    	return myList;
     }
 
     public void removeCity(int index) {

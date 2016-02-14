@@ -47,6 +47,12 @@
 				<h:inputText id="web" value="#{activitiesController.activ.web}"/>
 				<h:message id="messageWeb" for="web" />
 			</div>
+			<div>
+				<p>Nature :</p>
+				<h:selectOneMenu value="#{activitiesController.activ.nature}">
+					<f:selectItems value="#{activitiesController.getNatures()}"/>
+				</h:selectOneMenu>
+			</div>
 			<br />
 			<h:commandButton value="Add" action="#{activitiesController.addActivities()}">
 				<!-- <f:ajax execute="@this titre" render="@form" />

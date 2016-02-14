@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 /**
  * 
  * @author Frederic and Mariana
@@ -32,8 +35,9 @@ public class CV implements Serializable {
 	        nullable = false)
 	int numCV;
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JoinColumn(name="refCV")
+	
     private List<Activitie> activities;
 
 	public CV() {
