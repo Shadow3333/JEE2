@@ -17,6 +17,7 @@
         <div id="header">
             <ui:insert name="header">
                 <span>My application</span>
+                <h:outputText id="connectedUser" style="float:right" value="#{ConnectedController.person.mail}" />
             </ui:insert>
         </div>
         <div id="menu">

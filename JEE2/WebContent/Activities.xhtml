@@ -14,7 +14,7 @@
 			<h:panelGroup rendered="#{activitiesController.activities.size() > 0}">
 				<p>Activities :</p>
 				<ul>
-					<ui:repeat var="activ" varStatus="s" value="#{activitiesController.activities}">
+					<ui:repeat var="activ" varStatus="s" value="#{activitiesController.creatListActivities()}">
 						<li>
 							Activitie :
 							<p>Titre = <h:outputText value="#{activ.titre}" /></p>

@@ -7,15 +7,15 @@
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
-	<ui:composition template="/template/mylayout.xhtml">
+	<ui:decorate template="/template/mylayout.xhtml">
 		<ui:define name="content">
 			<h1>
 				<h:outputText value="#{messages.helloWorld}" />
 			</h1>
 			<h:graphicImage library="theme1" name="pagePrincipale.jpg" />
 		</ui:define>
-		<ui:define name="title">Hello Miaou !</ui:define>
-	</ui:composition>
+		<ui:define name="title">CVThèque !</ui:define>
+	</ui:decorate>
 	<ui:debug />
 </h:body>
 </html>

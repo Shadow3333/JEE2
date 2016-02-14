@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import monapp.model.Activitie;
+import monapp.services.CVEJB;
 import monapp.services.ConnectedUser;
 
 @ManagedBean
@@ -20,18 +21,16 @@ public class ActivitiesController implements Serializable {
     List<Activitie> activities = new ArrayList<Activitie>();
     @EJB
     ConnectedUser ejbUser;
+    @EJB
+    CVEJB ejbCV;
     
     public ActivitiesController() {
-    	init();
     }
     
-    public void init()
+    public List<Activitie> creatListActivities()
     {
-    	if (ejbUser.getCurrUser() == (null)) {
-    		System.out.println("pas d'user");
-		}
-    	System.out.println(ejbUser.getCurrUser().getMail());
     	activities = ejbUser.getCurrUser().getCv().getActivities();
+    	return activities;
     }
     
     public List<Activitie> getActivities() {
@@ -44,6 +43,9 @@ public class ActivitiesController implements Serializable {
 
     public void addActivities() {
     	activities.add(activ);
+    	System.out.println(ejbUser.getCurrUser());
+    	ejbUser.getCurrUser().getCv().addActivitie(activ);
+    	ejbCV.saveCV(ejbUser.getCurrUser().getCv());
         activ = new Activitie();
     }
 
