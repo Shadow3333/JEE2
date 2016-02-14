@@ -9,29 +9,26 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import monapp.model.Activitie;
-import monapp.model.Person;
-import monapp.services.CVEJB;
 import monapp.services.ConnectedUser;
-import monapp.services.PersonEJB;
 import monapp.utilitaire.nature;
 
-@ManagedBean
+@ManagedBean(name = "MyActivitiesController")
 @ViewScoped
-public class ActivitiesController implements Serializable {
+public class MyActivitiesController implements Serializable {
 
     private static final long serialVersionUID = 5443351151396868724L;
 
     private Activitie activ = new Activitie();
     List<Activitie> activities = new ArrayList<Activitie>();
+    Activitie TheActivitie;
     @EJB
     ConnectedUser ejbUser;
     
-    public ActivitiesController() {
+    public MyActivitiesController() {
     }
     
     public List<Activitie> ListActivities()
     {
-    	//activities = ConnectedUser.getCurrUser().getCv().getActivities();
     	return activities;
     }
     
@@ -74,6 +71,12 @@ public class ActivitiesController implements Serializable {
     {
     	activities = ConnectedUser.getCurrUser().getCv().getActivities();
     	return activities.size();
+    }
+    
+    public String goToActivitie(Activitie activitie)
+    {
+    	TheActivitie = activitie;
+    	return "editMyActivitie";
     }
 
 }

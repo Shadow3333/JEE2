@@ -14,7 +14,7 @@
 		<li><h:link outcome="Persons">CV personnes</h:link></li>
 		<c:choose>
 			<c:when test="${ConnectedController.person.mail != 'Unlogged'}">
-				<li><h:link outcome="Activities">My activities</h:link></li>
+				<li><h:link outcome="MyActivities">My activities</h:link></li>
 				<li><h:form><h:commandLink action="#{LoginController.Logout()}">Logout</h:commandLink></h:form></li>
 			</c:when>
 			<c:otherwise>

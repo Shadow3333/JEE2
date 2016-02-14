@@ -11,10 +11,10 @@
 
 		<h2>CRUD in AJAX</h2>
 		<h:form>
-			<h:panelGroup rendered="#{activitiesController.getSize() > 0}">
+			<h:panelGroup rendered="#{MyActivitiesController.getSize() > 0}">
 				<p>Activities :</p>
 				<ul>
-					<ui:repeat var="activ" varStatus="s" value="#{activitiesController.ListActivities()}">
+					<ui:repeat var="activ" varStatus="s" value="#{MyActivitiesController.ListActivities()}">
 						<li>
 							Activitie :
 							<p>Titre = <h:outputText value="#{activ.titre}" /></p>
@@ -27,34 +27,34 @@
 			</h:panelGroup>
 			<div>
 				<p>Titre :</p>
-				<h:inputText id="titre" value="#{activitiesController.activ.titre}">
+				<h:inputText id="titre" value="#{MyActivitiesController.activ.titre}">
 					<f:validateLength minimum="3" maximum="8" />
 				</h:inputText>
 				<h:message id="messageTitre" for="titre" />
 			</div>
 			<div>
 				<p>Description :</p>
-				<h:inputText id="description" value="#{activitiesController.activ.description}"/>
+				<h:inputText id="description" value="#{MyActivitiesController.activ.description}"/>
 				<h:message id="messageDescription" for="description" />
 			</div>
 			<div>
 				<p>Year :</p>
-				<h:inputText id="year" value="#{activitiesController.activ.year}"/>
+				<h:inputText id="year" value="#{MyActivitiesController.activ.year}"/>
 				<h:message id="messageYear" for="year" />
 			</div>
 			<div>
 				<p>Web :</p>
-				<h:inputText id="web" value="#{activitiesController.activ.web}"/>
+				<h:inputText id="web" value="#{MyActivitiesController.activ.web}"/>
 				<h:message id="messageWeb" for="web" />
 			</div>
 			<div>
 				<p>Nature :</p>
-				<h:selectOneMenu value="#{activitiesController.activ.nature}">
-					<f:selectItems value="#{activitiesController.getNatures()}"/>
+				<h:selectOneMenu value="#{MyActivitiesController.activ.nature}">
+					<f:selectItems value="#{MyActivitiesController.getNatures()}"/>
 				</h:selectOneMenu>
 			</div>
 			<br />
-			<h:commandButton value="Add" action="#{activitiesController.addActivities()}">
+			<h:commandButton value="Add" action="#{MyActivitiesController.addActivities()}">
 				<!-- <f:ajax execute="@this titre" render="@form" />
 				<f:ajax execute="@this description" render="@form" /> -->
 			</h:commandButton>
