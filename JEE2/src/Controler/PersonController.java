@@ -21,25 +21,13 @@ public class PersonController {
 	@EJB
 	private PersonEJB personEjb;
 	
-	public void init() {
-		if (personEjb == null) {
-			System.out.println("bigprob");
-		}
-		System.out.println("et il passera par la");
-		listPerson = personEjb.getPersons();
-//		List<Person> list = personEjb.getPersons();
-//		for (int i = 0; i < list.size(); i ++){
-//			listPerson.add(personEjb.getPersons().get(i));
-//		}
-
-	}
-	
 	public List<Person> fct() {
 		if (personEjb == null) {
 			System.out.println("bigprob");
 		}
 		System.out.println("et il passera par la");
-		return listPerson = personEjb.getPersons();
+		listPerson = personEjb.getPersons();
+		return listPerson;
 //		List<Person> list = personEjb.getPersons();
 //		for (int i = 0; i < list.size(); i ++){
 //			listPerson.add(personEjb.getPersons().get(i));

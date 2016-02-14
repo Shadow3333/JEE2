@@ -17,7 +17,7 @@
 						<th>Prénom</th>
 						<th>Actions</th>
 					</tr>
-					<ui:repeat var="p" varStatus="s" value="#{PersonController.listPerson}">
+					<ui:repeat var="p" varStatus="s" value="#{PersonController.fct()}">
 						<tr>
 							<td>#{p.name}</td>
 							<td>#{p.firstname}</td>
