@@ -60,4 +60,9 @@ public class ConnectedUser {
 		em.remove(em.contains(logs) ? logs : em.merge(logs));
 	}
 	
+	public Person getCurrUser()
+	{
+		return person;
+	}
+	
 }

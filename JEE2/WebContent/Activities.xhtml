@@ -11,10 +11,10 @@
 
 		<h2>CRUD in AJAX</h2>
 		<h:form>
-			<h:panelGroup rendered="#{ajaxBean.activities.size() > 0}">
+			<h:panelGroup rendered="#{activitiesController.activities.size() > 0}">
 				<p>Activities :</p>
 				<ul>
-					<ui:repeat var="activ" varStatus="s" value="#{ajaxBean.activities}">
+					<ui:repeat var="activ" varStatus="s" value="#{activitiesController.activities}">
 						<li>
 							Activitie :
 							<p>Titre = <h:outputText value="#{activ.titre}" /></p>
@@ -27,28 +27,28 @@
 			</h:panelGroup>
 			<div>
 				<p>Titre :</p>
-				<h:inputText id="titre" value="#{ajaxBean.activ.titre}">
+				<h:inputText id="titre" value="#{activitiesController.activ.titre}">
 					<f:validateLength minimum="3" maximum="8" />
 				</h:inputText>
 				<h:message id="messageTitre" for="titre" />
 			</div>
 			<div>
 				<p>Description :</p>
-				<h:inputText id="description" value="#{ajaxBean.activ.description}"/>
+				<h:inputText id="description" value="#{activitiesController.activ.description}"/>
 				<h:message id="messageDescription" for="description" />
 			</div>
 			<div>
 				<p>Year :</p>
-				<h:inputText id="year" value="#{ajaxBean.activ.year}"/>
+				<h:inputText id="year" value="#{activitiesController.activ.year}"/>
 				<h:message id="messageYear" for="year" />
 			</div>
 			<div>
 				<p>Web :</p>
-				<h:inputText id="web" value="#{ajaxBean.activ.web}"/>
+				<h:inputText id="web" value="#{activitiesController.activ.web}"/>
 				<h:message id="messageWeb" for="web" />
 			</div>
 			<br />
-			<h:commandButton value="Add" action="#{ajaxBean.addActivities()}">
+			<h:commandButton value="Add" action="#{activitiesController.addActivities()}">
 				<!-- <f:ajax execute="@this titre" render="@form" />
 				<f:ajax execute="@this description" render="@form" /> -->
 			</h:commandButton>

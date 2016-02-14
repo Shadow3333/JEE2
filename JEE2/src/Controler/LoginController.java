@@ -7,14 +7,12 @@ import monapp.services.ConnectedUser;
 
 @ManagedBean(name = "LoginControler")
 @SessionScoped
-public class LoginControler {
+public class LoginController {
 
     private String mail = "";
     private String pwd = "";
     @EJB
     ConnectedUser ejbUser;
-//    InMemoryCVThèque manager;
-
     
     public String submit() {
     	boolean testlogs = ejbUser.login(mail, pwd);
