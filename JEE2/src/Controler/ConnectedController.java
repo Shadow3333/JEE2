@@ -18,8 +18,7 @@ public class ConnectedController {
 	
 	public Person getPerson()
 	{
-		person = ejbUser.getCurrUser();
-		System.out.println(person);
+		person = ConnectedUser.getCurrUser();
 		if(person == null)
 		{
 			person = new Person();

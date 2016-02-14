@@ -29,7 +29,7 @@ public class ActivitiesController implements Serializable {
     
     public List<Activitie> creatListActivities()
     {
-    	activities = ejbUser.getCurrUser().getCv().getActivities();
+    	activities = ConnectedUser.getCurrUser().getCv().getActivities();
     	return activities;
     }
     
@@ -43,9 +43,9 @@ public class ActivitiesController implements Serializable {
 
     public void addActivities() {
     	activities.add(activ);
-    	System.out.println(ejbUser.getCurrUser());
-    	ejbUser.getCurrUser().getCv().addActivitie(activ);
-    	ejbCV.saveCV(ejbUser.getCurrUser().getCv());
+    	System.out.println(ConnectedUser.getCurrUser());
+    	ConnectedUser.getCurrUser().getCv().addActivitie(activ);
+    	ejbCV.saveCV(ConnectedUser.getCurrUser().getCv());
         activ = new Activitie();
     }
 

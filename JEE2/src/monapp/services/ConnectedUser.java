@@ -16,7 +16,7 @@ public class ConnectedUser {
 	
 	@EJB
 	private PersonEJB personEjb;
-	private Person person;
+	private static Person person;
 	
 	@PersistenceContext(unitName = "Jee2BD")
 	private EntityManager em;
@@ -60,7 +60,7 @@ public class ConnectedUser {
 		em.remove(em.contains(logs) ? logs : em.merge(logs));
 	}
 	
-	public Person getCurrUser()
+	public static Person getCurrUser()
 	{
 		return person;
 	}
