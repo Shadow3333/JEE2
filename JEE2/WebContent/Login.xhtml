@@ -14,18 +14,18 @@
 
 				<h3><h:outputText value="Mail&#160;:" /></h3>
 				<div>
-					<h:inputText id="mail" value="#{LoginControler.mail}" required="true">
+					<h:inputText id="mail" value="#{LoginController.mail}" required="true">
 						<f:validateRegex pattern="^[a-z.0-9]+[a-z._0-9]+@[a-z]+[.]{1}[a-z]+$" />
 					</h:inputText>
 					<h:message errorClass="error" for="mail" />
 				</div>
 				<h3><h:outputText value="Password&#160;:" /></h3>
 				<div>
-					<h:inputText id="pwd" value="#{LoginControler.pwd}" required="true"/>
+					<h:inputText id="pwd" value="#{LoginController.pwd}" required="true"/>
 					<h:message errorClass="error" for="pwd" />
 				</div>
 				<br/>
-				<h:commandButton value="Submit" action="#{LoginControler.submit}"/>
+				<h:commandButton value="Submit" action="#{LoginController.submit}"/>
 
 		</h:form>
 
