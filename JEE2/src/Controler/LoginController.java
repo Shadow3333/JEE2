@@ -39,4 +39,9 @@ public class LoginController {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	
+	public String Logout(){
+		ejbUser.logout();
+		return "Logout";
+	}
 }

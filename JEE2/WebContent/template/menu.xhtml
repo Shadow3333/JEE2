@@ -4,15 +4,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition>
 	<div>Menu :</div>
 	<ul>
 		<li><h:link outcome="hello">Accueil</h:link></li>
 		<li><h:link outcome="Persons">Voir les CV des personnes</h:link></li>
-		<li><h:link outcome="Activities">My activities</h:link></li>
-		<li><h:link outcome="Login">Login</h:link></li>
+		<c:choose>
+			<c:when test="${ConnectedController.person.mail != 'Unlogged'}">
+				<li><h:link outcome="Activities">My activities</h:link></li>
+				<li><h:link outcome="Logout">Logout</h:link></li>
+			</c:when>
+			<c:otherwise>
+				<li><h:link outcome="Login">Login</h:link></li>
+			</c:otherwise>
+		</c:choose>
 	</ul>
 </ui:composition>
 
