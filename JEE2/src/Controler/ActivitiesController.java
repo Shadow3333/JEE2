@@ -43,9 +43,8 @@ public class ActivitiesController implements Serializable {
 
     public void addActivities() {
     	activities.add(activ);
-    	System.out.println(ConnectedUser.getCurrUser());
-    	ConnectedUser.getCurrUser().getCv().addActivitie(activ);
-    	ejbCV.saveCV(ConnectedUser.getCurrUser().getCv());
+//    	ConnectedUser.getCurrUser().getCv().addActivitie(activ);
+//    	ejbCV.saveCV(ConnectedUser.getCurrUser().getCv());
         activ = new Activitie();
     }
 
