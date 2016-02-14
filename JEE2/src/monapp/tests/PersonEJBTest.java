@@ -2,6 +2,8 @@ package monapp.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.ejb.embeddable.EJBContainer;
 import javax.naming.NamingException;
 
@@ -70,6 +72,16 @@ public class PersonEJBTest {
 		personEjb.savePerson(person1);
 		Person personDe = personEjb.findPerson("Rem@gmail.com");
 		personEjb.remove(personDe);
+	}
+	
+	@Test
+	public void testGetPersons(){
+		CV cv = new CV();
+		person1 = new Person("SmithRem", "johnRem", "Rem@gmail.com", cv);
+		personEjb.savePerson(person1);
+		List<Person> list = personEjb.getPersons();
+		System.out.println(list.size());
+		assertNotNull(list.size());
 	}
 
 }

@@ -17,11 +17,11 @@
 						<th>Prénom</th>
 						<th>Actions</th>
 					</tr>
-					<ui:repeat var="p" value="#{peron.persons}">
+					<ui:repeat var="p" varStatus="s" value="#{PersonController.listPerson}">
 						<tr>
 							<td>#{p.name}</td>
 							<td>#{p.firstname}</td>
-							<td><h:commandLink action="#{person.show(p.mail)}"
+							<td><h:commandLink action="#{personController.show(p.mail)}"
 									value="Show" /></td>
 						</tr>
 					</ui:repeat>
