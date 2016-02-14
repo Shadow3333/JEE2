@@ -29,7 +29,7 @@ public class ActivitiesController implements Serializable {
     public ActivitiesController() {
     }
     
-    public List<Activitie> creatListActivities()
+    public List<Activitie> ListActivities()
     {
     	//activities = ConnectedUser.getCurrUser().getCv().getActivities();
     	return activities;
@@ -68,6 +68,12 @@ public class ActivitiesController implements Serializable {
 
     public void setActivitie(Activitie activ) {
         this.activ = activ;
+    }
+    
+    public int getSize()
+    {
+    	activities = ConnectedUser.getCurrUser().getCv().getActivities();
+    	return activities.size();
     }
 
 }

@@ -11,10 +11,10 @@
 
 		<h2>CRUD in AJAX</h2>
 		<h:form>
-			<h:panelGroup rendered="#{activitiesController.activities.size() > 0}">
+			<h:panelGroup rendered="#{activitiesController.getSize() > 0}">
 				<p>Activities :</p>
 				<ul>
-					<ui:repeat var="activ" varStatus="s" value="#{activitiesController.creatListActivities()}">
+					<ui:repeat var="activ" varStatus="s" value="#{activitiesController.ListActivities()}">
 						<li>
 							Activitie :
 							<p>Titre = <h:outputText value="#{activ.titre}" /></p>
