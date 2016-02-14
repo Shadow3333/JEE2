@@ -25,29 +25,22 @@ public class PersonController {
 		if (personEjb == null) {
 			System.out.println("bigprob");
 		}
-		System.out.println("et il passera par la");
 		listPerson = personEjb.getPersons();
 		return listPerson;
-//		List<Person> list = personEjb.getPersons();
-//		for (int i = 0; i < list.size(); i ++){
-//			listPerson.add(personEjb.getPersons().get(i));
-//		}
-
 	}
 	
 	public Person getThePerson(){
 		return thePerson;
 	}
 	
+	public void setThePerson(Person person){
+		this.thePerson = person;
+	}
+	
 	public String show(String mail) {
         thePerson = personEjb.findPerson(mail);
-        return "showCourse";
+        return "Person";
     }
-	
-	public String newPerson(){
-		thePerson = new Person();
-		return "Person";
-	}
 
 	public List<Person> getListPerson() {
 		return listPerson;

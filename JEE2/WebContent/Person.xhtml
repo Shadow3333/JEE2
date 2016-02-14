@@ -10,31 +10,17 @@
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 		<f:view>
-			<c:set var="p" value="#{person.thePerson}" />
+			<c:set var="p" value="#{PersonController.getThePerson()}" />
 			<h1>Peronne : #{p.name}</h1>
 			<h3>Informations</h3>
 			<p>Mail: #{p.mail}</p>
 			<p>Nom: #{p.name}</p>
 			<p>Prénom: #{p.firstname}</p>
 			<p>Date de naissance: #{p.birth}</p>
-			<h3>CV :</h3>
-			<ui:repeat var="a" value="#{activity.activities}">
-				<tr>
-					<td>#{a.titre}</td>
-					<td>#{a.description}</td>
-					<td>#{a.year}</td>
-					<td>#{a.web}</td>
-				</tr>
-			</ui:repeat>
-			<p>
-				<h:link outcome="courses">List of courses</h:link>
-			</p>
+			<h3>Activités :</h3>
+			<li><h:link outcome="Activities">Mes activitiées</h:link></li>
 		</f:view>
-		<h:form>
-			<p>
-				<h:commandLink action="editCourse">Modifier</h:commandLink>
-			</p>
-		</h:form>
+
 	</ui:define>
 </ui:composition>
 
