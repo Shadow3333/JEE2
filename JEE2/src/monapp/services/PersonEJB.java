@@ -1,10 +1,14 @@
 package monapp.services;
 
+import java.util.List;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
+import monapp.model.CV;
 import monapp.model.Person;
 
 /**
@@ -30,6 +34,12 @@ public class PersonEJB {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public List<Person> getPersons()
+	{
+		TypedQuery<Person> q = em.createQuery("FROM Person", Person.class);
+		return q.getResultList();
 	}
 
 	/**
