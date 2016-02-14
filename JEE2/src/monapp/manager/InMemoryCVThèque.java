@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.embeddable.EJBContainer;
+import javax.naming.NamingException;
+
+import monapp.model.CV;
 import monapp.services.CVEJB;
 import monapp.services.ConnectedUser;
 import monapp.services.PersonEJB;
@@ -15,36 +19,28 @@ import monapp.services.PersonEJB;
  */
 public class InMemoryCVThèque {
 
+	private static EJBContainer ejbContainer;
 	final ConnectedUser ejbUser;
 	final CVEJB ejbCV;
 	final PersonEJB ejbPers;
 
     /**
      * constructor
+     * @throws NamingException 
      */
-    public InMemoryCVThèque() {
-    	ejbUser = new ConnectedUser();
-    	ejbCV = new CVEJB();
-    	ejbPers = new PersonEJB();
+    public InMemoryCVThèque() throws NamingException {
+    	ejbUser = (ConnectedUser) ejbContainer.getContext().lookup("java:global/JEE2/ConnectedUser");
+    	ejbCV = (CVEJB) ejbContainer.getContext().lookup("java:global/JEE2/CVEJB");
+    	ejbPers = (PersonEJB) ejbContainer.getContext().lookup("java:global/JEE2/PersonEJB");
     }
     
     /**
      * prepares a list of people
      * return Map map
      */
-    public Map<String, List<Person>> preparList()
-    {
-    	Map<String, List<Person>> map = new HashMap<String, List<Person>>();
-    	List<Group> listGr = DAO_gp.findAllGroups();
-    	if (listGr.isEmpty()) {
-			return null;
-		}
-    	
-    	for (Group group : listGr) {
-    		map.put(group.getNameGr(), DAO_pers.findByGroup(group.getNameGr()));
-		}
-    	
-    	return map;
+    public List<CV> preparList()
+    { 	
+    	return ejbCV.getCVs();
     }
     
     /**
