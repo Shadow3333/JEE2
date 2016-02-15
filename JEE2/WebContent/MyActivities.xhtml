@@ -49,35 +49,37 @@
 				<f:ajax execute="@this description" render="@form" /> -->
 			</h:commandButton>
 
-<h:form id="form">
-			<p:dataTable var="activ"
-				value="#{MyActivitiesController.ListActivities()}">
-				<p:column headerText="Titre">
-					<h:inputText value="#{activ.titre}" />
-				</p:column>
-
-				<p:column headerText="Description">
-					<h:inputText value="#{activ.description}" />
-				</p:column>
-
-				<p:column headerText="Year">
-					<h:inputText value="#{activ.year}" />
-				</p:column>
-
-				<p:column headerText="Web">
-					<h:outputText value="#{activ.web}" />
-				</p:column>
-
-				<p:column headerText="Nature">
-					<h:outputText value="#{activ.nature}" />
-				</p:column>
-			</p:dataTable>
-			<h:commandButton value="Add"
-				action="#{MyActivitiesController.addActivities()}">
-				<!-- <f:ajax execute="@this titre" render="@form" />
-				<f:ajax execute="@this description" render="@form" /> -->
-			</h:commandButton>
-		</h:form>
+		<h:panelGroup rendered="#{MyActivitiesController.getSize() > 0}">
+			<h:form id="form">
+				<p:dataTable var="activ"
+					value="#{MyActivitiesController.ListActivities()}">
+					<p:column headerText="Titre">
+						<h:inputText value="#{activ.titre}" />
+					</p:column>
+	
+					<p:column headerText="Description">
+						<h:inputText value="#{activ.description}" />
+					</p:column>
+	
+					<p:column headerText="Year">
+						<h:inputText value="#{activ.year}" />
+					</p:column>
+	
+					<p:column headerText="Web">
+						<h:outputText value="#{activ.web}" />
+					</p:column>
+	
+					<p:column headerText="Nature">
+						<h:outputText value="#{activ.nature}" />
+					</p:column>
+				</p:dataTable>
+				<h:commandButton value="Add"
+					action="#{MyActivitiesController.addActivities()}">
+					<!-- <f:ajax execute="@this titre" render="@form" />
+					<f:ajax execute="@this description" render="@form" /> -->
+				</h:commandButton>
+			</h:form>
+		</h:panelGroup>
 </h:form>
 
 	</ui:define>
