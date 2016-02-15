@@ -10,7 +10,7 @@
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 	
-		<h2>CRUD in AJAX</h2>
+		<h2>Gestion de mes activités</h2>
 		<h:form>
 			<div>
 				<p>Titre :</p>
@@ -51,14 +51,14 @@
 			<br/>
 		</h:form>
 		<h:form>
-			<h:panelGroup rendered="#{MyActivitiesController.getSize() > 0}">
-			 <p:contextMenu for="table" widgetVar="cMenu">   
-		       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
-		       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
-		   </p:contextMenu>
-				<p:dataTable id="table" var="activ" value="#{MyActivitiesController.ListActivities()}" editable="true" editMode="cell" widgetVar="cellCars">
+			<h:panelGroup is="panel" rendered="#{MyActivitiesController.getSize() > 0}">
+				<p:contextMenu for="table" widgetVar="cMenu">   
+			       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+			       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()" />  
+			  	</p:contextMenu>
+				<p:dataTable id="table" update="panel" var="activ" value="#{MyActivitiesController.ListActivities()}" editable="true" editMode="cell" widgetVar="cellCars">
 				
-					<p:ajax event="cellEdit" listener="#{MyActivitiesController.majActivitie(activ)}" />
+					<p:ajax event="cellEdit" listener="#{MyActivitiesController.majActivitie(activ)}"/>
 						
 					<p:column filterBy="#{activ.titre}" headerText="Titre">
 						<p:cellEditor>
@@ -99,7 +99,7 @@
 		              	</p:cellEditor>
 					</p:column>
 					<p:column headerText="">
-						<p:commandButton update="table" action="#{MyActivitiesController.removeActivitie(activ)}" title="Delete"/>
+						<p:commandButton onclick="table" action="#{MyActivitiesController.removeActivitie(activ)}" title="Delete"/>
 					</p:column>
 				</p:dataTable>
 			</h:panelGroup>
