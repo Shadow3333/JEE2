@@ -83,8 +83,6 @@ public class MyActivitiesController implements Serializable {
     
     public void majActivitie(Activitie activitie)
     {
-    	System.out.println("gna");
-    	System.out.println(activitie.getTitre());
     	ejbUser.majActivitie(activitie);
     }
     

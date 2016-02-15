@@ -90,4 +90,13 @@ public class ConnectedUser {
 			e.printStackTrace();
 		}
 	}
+	
+	public void saveUser(Person person)
+	{
+		try {
+			em.merge(person);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -11,31 +11,45 @@
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 		<h2>Mes activités</h2>
+		<h:form>
+			<c:set var="p" value="#{ConnectedController.person}" />
+			<div>
+				<h3>
+					<h:outputText value="Name: " />
+				</h3>
+				<p:inputText id="Name" value="#{p.name}">
+					<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
+				</p:inputText>
+			</div>
 
-		<h:form id="form">
-			<c:set var="p" value="#{ConnectedController.person}"/>
-			<div>
-				<h3>Name :</h3>
-				<h:inputText value="#{p.name}" />
-			</div>
-			<div>
-				<h3>Mail :</h3>
-				<h:inputText value="#{p.mail}" />
-			</div>
-			<div>
-				<h3>Name :</h3>
-				<h:inputText value="#{p.name}" />
-			</div>
-			<div>
-				<h3>First Name :</h3>
-				<h:inputText value="#{p.firstname}" />
-			</div>
-			<div>
-				<h3>Birthday :</h3>
-				<h:inputText value="#{p.birth}" />
-			</div>
+			<h3>
+				<h:outputText value="Mail: " />
+			</h3>
+			<p:inputText id="Mail" value="#{p.mail}">
+				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
+			</p:inputText>
+
+			<h3>
+				<h:outputText value="Web: " />
+			</h3>
+			<p:inputText id="Web" value="#{p.web}">
+				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
+			</p:inputText>
+
+			<h3>
+				<h:outputText value="First name: " />
+			</h3>
+			<p:inputText id="FirstName" value="#{p.firstname}">
+				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
+			</p:inputText>
+
+			<h3>
+				<h:outputText value="Birthday " />
+			</h3>
+			<p:inputText id="Birthday" value="#{p.birth}">
+				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
+			</p:inputText>
 		</h:form>
-
 	</ui:define>
 </ui:composition>
 
