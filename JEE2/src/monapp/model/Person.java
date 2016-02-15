@@ -45,12 +45,15 @@ public class Person implements Serializable{
 	private String web;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="refPerson")
+	@JoinColumn(name="refCV")
 	private CV cv;
 	
-	public Person() {
-		super();
-	}
+//	@OneToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name="refLogs")
+//	private Login logs;
+	
+	
+	
 	
 	/**
 	 * constructor
@@ -65,6 +68,35 @@ public class Person implements Serializable{
 		this.firstname = firstname;
 		this.mail = mail;
 		this.cv = cv;
+	}
+	
+	public Person(String name, String firstname, String mail) {
+		super();
+		this.name = name;
+		this.firstname = firstname;
+		this.mail = mail;
+	}
+	
+	
+	public Person(String name, String firstname, String birth, String mail, String web) {
+		super();
+		this.name = name;
+		this.firstname = firstname;
+		this.birth = birth;
+		this.mail = mail;
+		this.web = web;
+	}
+	
+//	public Login getLogs() {
+//		return logs;
+//	}
+//
+//	public void setLogs(Login logs) {
+//		this.logs = logs;
+//	}
+
+	public Person() {
+		super();
 	}
 	
 	/**
