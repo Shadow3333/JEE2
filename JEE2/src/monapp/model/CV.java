@@ -49,6 +49,11 @@ public class CV implements Serializable {
 	{
 		activities.add(activ);
 	}
+	
+	public void removeActivitie(Activitie activ)
+	{
+		activities.remove(activ);
+	}
 
 	public int getNumCV() {
 		return numCV;

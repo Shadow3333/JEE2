@@ -29,15 +29,14 @@ public class MyActivitiesController implements Serializable {
     
     public List<Activitie> ListActivities()
     {
+    	for (Activitie activitie : activities) {
+			System.out.println(activitie.getTitre());
+		}
     	return activities;
     }
     
     public List<Activitie> getActivities() {
         return activities;
-    }
-
-    public void setCities(List<Activitie> activities) {
-        this.activities = activities;
     }
 
     public void addActivities() {
@@ -74,5 +73,16 @@ public class MyActivitiesController implements Serializable {
     	TheActivitie = activitie;
     	return "editMyActivitie";
     }
+    
+    public void removeActivitie(Activitie activitie)
+    {
+    	System.out.println("passe par la");
+    	activities.remove(activitie);
+    	ejbUser.removeActivitie(activ);
+    }
 
+    public void removeActivitie()
+    {
+    	System.out.println("passe par la");
+    }
 }

@@ -77,4 +77,13 @@ public class ConnectedUser {
 		}
 	}
 	
+	public void removeActivitie(Activitie activ) {
+		try {
+			CV cv = person.getCv();
+			cv.removeActivitie(activ);
+			em.merge(cv);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
