@@ -86,4 +86,12 @@ public class ConnectedUser {
 			e.printStackTrace();
 		}
 	}
+	
+	public void majActivitie(Activitie activ) {
+		try {
+			em.merge(activ);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

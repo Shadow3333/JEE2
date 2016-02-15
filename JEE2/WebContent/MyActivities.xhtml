@@ -52,28 +52,51 @@
 		</h:form>
 		<h:form>
 			<h:panelGroup rendered="#{MyActivitiesController.getSize() > 0}">
-				<p:dataTable id="table" var="activ"
-					value="#{MyActivitiesController.ListActivities()}">
+			 <p:contextMenu for="table" widgetVar="cMenu">   
+		       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+		       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+		   </p:contextMenu>
+				<p:dataTable id="table" var="activ" value="#{MyActivitiesController.ListActivities()}" editable="true" editMode="cell" widgetVar="cellCars">
+				
+					<p:ajax event="cellEdit" listener="#{MyActivitiesController.majActivitie(activ)}" />
+						
 					<p:column filterBy="#{activ.titre}" headerText="Titre">
-						<h:inputText id="titre" value="#{activ.titre}" />
+						<p:cellEditor>
+		                  <f:facet name="output"><h:outputText value="#{activ.titre}" /></f:facet>
+		                  <f:facet name="input"><p:inputText id="titre" value="#{activ.titre}" style="width:96%"/></f:facet>
+		              </p:cellEditor>
 					</p:column>
 	
 					<p:column filterBy="#{activ.description}" headerText="Description">
-						<h:inputText value="#{activ.description}" />
+						<p:cellEditor>
+		                  <f:facet name="output"><h:outputText value="#{activ.description}" /></f:facet>
+		                  <f:facet name="input"><p:inputText id="description" value="#{activ.description}" style="width:96%"/></f:facet>
+		              </p:cellEditor>
 					</p:column>
 	
 					<p:column filterBy="#{activ.year}" headerText="Year">
-						<h:inputText value="#{activ.year}" />
+						<p:cellEditor>
+		                	<f:facet name="output"><h:outputText value="#{activ.year}" /></f:facet>
+		                	<f:facet name="input"><p:inputText id="year" value="#{activ.year}" style="width:96%"/></f:facet>
+		              	</p:cellEditor>
 					</p:column>
 	
 					<p:column filterBy="#{activ.web}" headerText="Web">
-						<h:inputText value="#{activ.web}" />
+						<p:cellEditor>
+		                	<f:facet name="output"><h:outputText value="#{activ.web}" /></f:facet>
+		                	<f:facet name="input"><p:inputText id="Web" value="#{activ.web}" style="width:96%"/></f:facet>
+		              	</p:cellEditor>
 					</p:column>
 	
 					<p:column filterBy="#{activ.nature}" headerText="Nature">
-						<h:selectOneMenu value="#{activ.nature}">
-							<f:selectItems value="#{MyActivitiesController.getNatures()}" />
-						</h:selectOneMenu>
+						<p:cellEditor>
+							<f:facet name="output"><h:outputText value="#{activ.nature}" /></f:facet>
+			                <f:facet name="input">
+			                   	<h:selectOneMenu value="#{activ.nature}">
+									<f:selectItems value="#{MyActivitiesController.getNatures()}" />
+								</h:selectOneMenu>
+			               </f:facet>
+		              	</p:cellEditor>
 					</p:column>
 					<p:column headerText="">
 						<p:commandButton update="table" action="#{MyActivitiesController.removeActivitie(activ)}" title="Delete"/>

@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.CellEditEvent;
 
 import monapp.model.Activitie;
 import monapp.services.ConnectedUser;
@@ -29,9 +33,6 @@ public class MyActivitiesController implements Serializable {
     
     public List<Activitie> ListActivities()
     {
-    	for (Activitie activitie : activities) {
-			System.out.println(activitie.getTitre());
-		}
     	return activities;
     }
     
@@ -76,13 +77,15 @@ public class MyActivitiesController implements Serializable {
     
     public void removeActivitie(Activitie activitie)
     {
-    	System.out.println("passe par la");
     	activities.remove(activitie);
     	ejbUser.removeActivitie(activ);
     }
-
-    public void removeActivitie()
+    
+    public void majActivitie(Activitie activitie)
     {
-    	System.out.println("passe par la");
+    	System.out.println("gna");
+    	System.out.println(activitie.getTitre());
+    	ejbUser.majActivitie(activitie);
     }
+    
 }
