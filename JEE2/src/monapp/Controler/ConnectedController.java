@@ -33,12 +33,10 @@ public class ConnectedController {
 	
 	public Person getCurrUser()
 	{
-		System.out.println("passe par la");
 		return person;
 	}
 	
 	public void saveCurrUser() {
-		System.out.println("azertyuio");
 		ejbUser.saveUser(person);
 	}
 }
