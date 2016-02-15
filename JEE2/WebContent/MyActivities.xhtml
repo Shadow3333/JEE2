@@ -54,23 +54,23 @@
 			<h:panelGroup rendered="#{MyActivitiesController.getSize() > 0}">
 				<p:dataTable id="table" var="activ"
 					value="#{MyActivitiesController.ListActivities()}">
-					<p:column headerText="Titre">
+					<p:column filterBy="#{activ.titre}" headerText="Titre">
 						<h:inputText id="titre" value="#{activ.titre}" />
 					</p:column>
 	
-					<p:column headerText="Description">
+					<p:column filterBy="#{activ.description}" headerText="Description">
 						<h:inputText value="#{activ.description}" />
 					</p:column>
 	
-					<p:column headerText="Year">
+					<p:column filterBy="#{activ.year}" headerText="Year">
 						<h:inputText value="#{activ.year}" />
 					</p:column>
 	
-					<p:column headerText="Web">
+					<p:column filterBy="#{activ.web}" headerText="Web">
 						<h:inputText value="#{activ.web}" />
 					</p:column>
 	
-					<p:column headerText="Nature">
+					<p:column filterBy="#{activ.nature}" headerText="Nature">
 						<h:selectOneMenu value="#{activ.nature}">
 							<f:selectItems value="#{MyActivitiesController.getNatures()}" />
 						</h:selectOneMenu>
