@@ -10,10 +10,9 @@
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 
-		<h2>CRUD in AJAX</h2>
+		<h2>Ses activités</h2>
 
 		<h:form id="form">
-			<h3>Activities :</h3>
 			<p:dataTable var="activ" value="#{PersonController.ListActivities()}">
 				<p:column filterBy="#{activ.titre}" headerText="Titre">
 					<h:outputText value="#{activ.titre}" />

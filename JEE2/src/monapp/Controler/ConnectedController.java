@@ -31,4 +31,9 @@ public class ConnectedController {
 		this.person = person;
 	}
 	
+	public Person getCurrUser()
+	{
+		System.out.println("passe par la");
+		return person;
+	}
 }
