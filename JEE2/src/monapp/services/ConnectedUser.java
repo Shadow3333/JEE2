@@ -2,7 +2,6 @@ package monapp.services;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,9 +23,7 @@ public class ConnectedUser {
 	private EntityManager em;
 	
 	@PostConstruct
-	public void construct()
-	{
-	}
+	public void construct(){}
 	
 	public boolean login(String mail, String pwd) {
 		TypedQuery<Login> q = em.createQuery("FROM Login where mail = '" + mail+"'", Login.class);
@@ -38,7 +35,6 @@ public class ConnectedUser {
 		return false;
 	}
 	
-	@Remove
 	public void logout() {
 		person = null;
 	}
