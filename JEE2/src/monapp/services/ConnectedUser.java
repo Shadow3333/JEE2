@@ -2,7 +2,6 @@ package monapp.services;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,9 +24,7 @@ public class ConnectedUser {
 	private EntityManager em;
 	
 	@PostConstruct
-	public void construct()
-	{
-	}
+	public void construct(){}
 	
 	public boolean login(String mail, String pwd) {
 		pwd = Hash.getEncodedPassword(pwd);
@@ -40,7 +37,6 @@ public class ConnectedUser {
 		return false;
 	}
 	
-	@Remove
 	public void logout() {
 		person = null;
 	}
@@ -92,6 +88,15 @@ public class ConnectedUser {
 	public void majActivitie(Activitie activ) {
 		try {
 			em.merge(activ);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveUser(Person person)
+	{
+		try {
+			em.merge(person);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

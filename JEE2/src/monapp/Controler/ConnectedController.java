@@ -31,4 +31,12 @@ public class ConnectedController {
 		this.person = person;
 	}
 	
+	public Person getCurrUser()
+	{
+		return person;
+	}
+	
+	public void saveCurrUser() {
+		ejbUser.saveUser(person);
+	}
 }
