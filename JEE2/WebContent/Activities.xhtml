@@ -4,27 +4,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 
 		<h2>CRUD in AJAX</h2>
-		<h:form>
-			<p>Activities :</p>
-			<ul>
-				<ui:repeat var="activ" varStatus="s" value="#{PersonController.ListActivities()}">
-					<li>
-						Activitie :
-						<p>Titre = <h:outputText value="#{activ.titre}" /></p>
-						<p>Description = <h:outputText value="#{activ.description}" /></p>
-						<p>Year = <h:outputText value="#{activ.year}" /></p>
-						<p>Web = <h:outputText value="#{activ.web}" /></p>
-					</li>
-				</ui:repeat>
-			</ul>
-		</h:form>
 
+		<h:form id="form">
+			<h3>Activities :</h3>
+			<p:dataTable var="activ" value="#{PersonController.ListActivities()}">
+				<p:column headerText="Titre">
+					<h:outputText value="#{activ.titre}" />
+				</p:column>
+
+				<p:column headerText="Description">
+					<h:outputText value="#{activ.description}" />
+				</p:column>
+
+				<p:column headerText="Year">
+					<h:outputText value="#{activ.year}" />
+				</p:column>
+
+				<p:column headerText="Web">
+					<h:outputText value="#{activ.web}" />
+				</p:column>
+
+				<p:column headerText="Nature">
+					<h:outputText value="#{activ.nature}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
