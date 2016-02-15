@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import monapp.model.Login;
 import monapp.services.ConnectedUser;
+import monapp.utilitaire.Hash;
+
 import javax.naming.Context;
 
 public class ConnectedUserTest {
@@ -21,11 +23,13 @@ public class ConnectedUserTest {
 	private ConnectedUser connectedUser;
 	private static Login login;
 	private static Login loginRemove;
+	private static String mdp;
 	
 	@BeforeClass
 	public static void init(){
 		ejbContainer = EJBContainer.createEJBContainer().getContext();
-		login = new Login("mail@mail.fr","aze");
+		mdp = Hash.getEncodedPassword("aze");
+		login = new Login("mail@mail.fr",mdp);
 		loginRemove = new Login("remove@mail", "a");
 	}
 	
@@ -48,7 +52,7 @@ public class ConnectedUserTest {
 
 	@Test
 	public void testLogin() {
-		connectedUser.addLogin("mailLog@mail.fr", "aze");
+		connectedUser.addLogin("mailLog@mail.fr", mdp);
 		boolean bool = connectedUser.login("mailLog@mail.fr", "aze");
 		assertTrue(bool);
 	}

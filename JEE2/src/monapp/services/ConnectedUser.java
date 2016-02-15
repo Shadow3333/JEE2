@@ -12,6 +12,7 @@ import monapp.model.Activitie;
 import monapp.model.CV;
 import monapp.model.Login;
 import monapp.model.Person;
+import monapp.utilitaire.Hash;
 
 @Stateful(name="ConnectedUser")
 public class ConnectedUser {
@@ -29,6 +30,7 @@ public class ConnectedUser {
 	}
 	
 	public boolean login(String mail, String pwd) {
+		pwd = Hash.getEncodedPassword(pwd);
 		TypedQuery<Login> q = em.createQuery("FROM Login where mail = '" + mail+"'", Login.class);
 		if (!q.equals(null) && 
 		     q.getSingleResult().getPassword().equals(pwd) ) {

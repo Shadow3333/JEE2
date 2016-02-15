@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
@@ -21,7 +22,7 @@
 				</div>
 				<h3><h:outputText value="Password&#160;:" /></h3>
 				<div>
-					<h:inputText id="pwd" value="#{LoginController.pwd}" required="true"/>
+					<p:password id="pwd" value="#{LoginController.pwd}" required="true"></p:password>
 					<h:message errorClass="error" for="pwd" />
 				</div>
 				<br/>

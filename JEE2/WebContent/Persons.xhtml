@@ -4,28 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
 		<f:view>
 			<h1>Liste des personnes</h1>
 			<h:form>
-				<table>
-					<tr>
-						<th>Nom</th>
-						<th>Prénom</th>
-						<th>Actions</th>
-					</tr>
-					<ui:repeat var="p" varStatus="s" value="#{PersonController.fct()}">
-						<tr>
-							<td>#{p.name}</td>
-							<td>#{p.firstname}</td>
-							<td><h:commandLink action="#{PersonController.show(p.mail)}"
-									value="Show" /></td>
-						</tr>
-					</ui:repeat>
-				</table>
+				<p:dataTable var="p" value="#{PersonController.fct()}">
+				<p:column filterBy="#{p.name}" headerText="Nom">
+					<h:outputText value="#{p.name}" />
+				</p:column>
+
+				<p:column filterBy="#{p.firstname}" headerText="Prénom">
+					<h:outputText value="#{p.firstname}" />
+				</p:column>
+
+				<p:column headerText="">
+						<h:commandLink action="#{PersonController.show(p.mail)}" value="Show" />
+				</p:column>
+			</p:dataTable>
 			</h:form>
 		</f:view>
 	</ui:define>
