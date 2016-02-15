@@ -1,7 +1,8 @@
-package Controler;
+package monapp.Controler;
 
 import javax.faces.bean.SessionScoped;
 
+import monapp.model.Activitie;
 import monapp.model.Person;
 import monapp.services.PersonEJB;
 
@@ -17,7 +18,9 @@ public class PersonController {
 	
 	private List<Person> listPerson = new ArrayList<Person>();
 	Person thePerson = new Person();
-	
+	List<Activitie> activities = new ArrayList<Activitie>();
+    Activitie TheActivitie;
+    
 	@EJB
 	private PersonEJB personEjb;
 	
@@ -49,6 +52,13 @@ public class PersonController {
 	public void setListPerson(List<Person> listPerson) {
 		this.listPerson = listPerson;
 	}
+	
+	public List<Activitie> ListActivities()
+    {
+    	activities = thePerson.getCv().getActivities();
+    	return activities;
+    }
+	
 	
 
 }

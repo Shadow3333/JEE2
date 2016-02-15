@@ -1,4 +1,4 @@
-package Controler;
+package monapp.Controler;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

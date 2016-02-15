@@ -1,4 +1,4 @@
-package Controler;
+package monapp.Controler;
 
 import javax.faces.bean.SessionScoped;
 

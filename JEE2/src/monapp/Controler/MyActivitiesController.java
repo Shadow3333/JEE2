@@ -1,4 +1,4 @@
-package Controler;
+package monapp.Controler;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class MyActivitiesController implements Serializable {
     Activitie TheActivitie;
     @EJB
     ConnectedUser ejbUser;
-    
+
     public MyActivitiesController() {
     }
     
@@ -53,10 +53,6 @@ public class MyActivitiesController implements Serializable {
 			myList.add(nature.toString());
 		}
     	return myList;
-    }
-
-    public void removeCity(int index) {
-        activities.remove(index);
     }
 
     public Activitie getActiv() {
