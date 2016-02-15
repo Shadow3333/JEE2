@@ -13,6 +13,11 @@ import monapp.model.Login;
 import monapp.model.Person;
 import monapp.utilitaire.Hash;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 @Stateful(name="ConnectedUser")
 public class ConnectedUser {
 	

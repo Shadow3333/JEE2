@@ -12,6 +12,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 @ManagedBean(name = "PersonController")
 @SessionScoped
 public class PersonController {

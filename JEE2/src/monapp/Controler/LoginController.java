@@ -5,6 +5,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import monapp.services.ConnectedUser;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 @ManagedBean(name = "LoginController")
 @SessionScoped
 public class LoginController {

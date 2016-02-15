@@ -15,6 +15,11 @@ import monapp.model.Activitie;
 import monapp.model.CV;
 import monapp.services.CVEJB;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 public class CVEJBTest {
 	
 	private static EJBContainer ejbContainer;

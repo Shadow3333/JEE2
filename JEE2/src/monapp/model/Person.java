@@ -5,7 +5,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -48,13 +47,6 @@ public class Person implements Serializable{
 	@JoinColumn(name="refCV")
 	private CV cv;
 	
-//	@OneToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="refLogs")
-//	private Login logs;
-	
-	
-	
-	
 	/**
 	 * constructor
 	 * @param idP
@@ -87,14 +79,6 @@ public class Person implements Serializable{
 		this.web = web;
 	}
 	
-//	public Login getLogs() {
-//		return logs;
-//	}
-//
-//	public void setLogs(Login logs) {
-//		this.logs = logs;
-//	}
-
 	public Person() {
 		super();
 	}

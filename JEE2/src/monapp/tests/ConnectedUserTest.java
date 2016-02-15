@@ -17,6 +17,11 @@ import monapp.utilitaire.Hash;
 
 import javax.naming.Context;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 public class ConnectedUserTest {
 	
 	private static Context ejbContainer;

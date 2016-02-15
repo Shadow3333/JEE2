@@ -7,6 +7,11 @@ import monapp.services.ConnectedUser;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+/**
+ * 
+ * @author Frederic and Mariana
+ *
+ */
 @ManagedBean(name = "ConnectedController")
 @SessionScoped
 public class ConnectedController {
