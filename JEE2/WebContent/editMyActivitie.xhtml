@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/mylayout.xhtml">
+	<ui:define name="content">
+		<f:view>
+			<h1>Activity edition</h1>
+			<h:form id="testgrid">
+				<c:set var="c" value="#{course.theCourse}" />
+				<h:panelGrid columns="3">
+							
+					Name : 
+								
+					<h:inputText id="name" value="#{c.name}" required="true"
+						requiredMessage="Le nom est obligatoire">
+						<f:validateRegex pattern="[a-zA-Z]*" />
+					</h:inputText>
+
+					<h:message for="name" style="color:red" />
+					
+					Hours :
+					
+					<h:inputText id="hour" value="#{c.hours}" required="true"
+						requiredMessage="l'heure please">
+					</h:inputText>
+
+					<h:message for="hour" style="color:red" />
+					
+					Description : 
+					
+					<h:inputText id="description" value="#{c.description}">
+					</h:inputText>
+
+					<h:message for="description" style="color:red" />
+
+					<h:outputText value="Nature : " />
+					<h:selectOneMenu id="level" value="#{c.level}" required="false">
+						<f:selectItems value="#{params.levels}" />
+					</h:selectOneMenu>
+
+					<h:commandButton action="#{course.save()}" value="Save" />
+					<h:link outcome="courses" value="List of courses" />
+
+				</h:panelGrid>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>
+</html>
