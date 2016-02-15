@@ -17,11 +17,18 @@ public class LoginController {
     public String submit() {
     	boolean testlogs = ejbUser.login(mail, pwd);
     	if (testlogs) {
+    		reset();
     		return "hello";
 		}
     	else
     		System.out.println("nop");
         return null;
+    }
+    
+    public void reset()
+    {
+    	mail = "";
+    	pwd = "";
     }
     
     public String getMail() {
