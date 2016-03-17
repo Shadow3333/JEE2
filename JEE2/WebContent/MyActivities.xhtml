@@ -12,45 +12,39 @@
 	
 		<h2>Gestion de mes activités</h2>
 		<h:form>
-			<div>
-				<p>Titre :</p>
-				<h:inputText id="titre"
+			<p:panelGrid id="grid" columns="3">
+				<p:outputLabel for="titre" value="Titre : " />
+				<p:inputText id="titre"
 					value="#{MyActivitiesController.activ.titre}">
 					<f:validateLength minimum="3" maximum="8" />
-				</h:inputText>
+				</p:inputText>
 				<h:message id="messageTitre" for="titre" />
-			</div>
-			<div>
-				<p>Description :</p>
-				<h:inputText id="description"
+				
+				<p:outputLabel for="description" value="Description : " />
+				<p:inputText id="description"
 					value="#{MyActivitiesController.activ.description}" />
-				<h:message id="messageDescription" for="description" />
-			</div>
-			<div>
-				<p>Year :</p>
-				<h:inputText id="year" value="#{MyActivitiesController.activ.year}" />
-				<h:message id="messageYear" for="year" />
-			</div>
-			<div>
-				<p>Web :</p>
-				<h:inputText id="web" value="#{MyActivitiesController.activ.web}" />
-				<h:message id="messageWeb" for="web" />
-			</div>
-			<div>
-				<p>Nature :</p>
-				<h:selectOneMenu value="#{MyActivitiesController.activ.nature}">
+				<p:message id="messageDescription" for="description" />
+				
+				<p:outputLabel for="year" value="Year : " />
+				<p:inputText id="year" value="#{MyActivitiesController.activ.year}" />
+				<p:message id="messageYear" for="year" />
+				
+				<p:outputLabel for="web" value="Web : " />
+				<p:inputText id="web" value="#{MyActivitiesController.activ.web}" />
+				<p:message id="messageWeb" for="web" />
+				
+				<p:outputLabel for="nature" value="Nature : " />
+				<p:selectOneMenu id="nature" value="#{MyActivitiesController.activ.nature}">
 					<f:selectItems value="#{MyActivitiesController.getNatures()}" />
-				</h:selectOneMenu>
-			</div>
-			<br/>
-			<div>			
-				<h:commandButton value="Add"
-					action="#{MyActivitiesController.addActivities()}">
-				</h:commandButton>
-			</div>
-			<br/>
+				</p:selectOneMenu>
+				<br/>
+				<p:commandButton value="Add"
+					action="#{MyActivitiesController.addActivities()}" update=":form2">
+				</p:commandButton>
+				<br/>
+			</p:panelGrid>
 		</h:form>
-		<h:form>
+		<h:form id="form2">
 			<h:panelGroup is="panel" rendered="#{MyActivitiesController.getSize() > 0}">
 				<p:contextMenu for="table" widgetVar="cMenu">   
 			       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import monapp.utilitaire.Email;
+
 /**
  * 
  * @author Frederic and Mariana
@@ -20,6 +22,7 @@ public class Person implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id()
+	@Email
 	@Basic(optional = false)
 	@Column(name = "mail", length = 200,
 	nullable = false, unique = true)

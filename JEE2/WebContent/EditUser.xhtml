@@ -13,42 +13,33 @@
 		<h2>Mes activités</h2>
 		<h:form>
 			<c:set var="p" value="#{ConnectedController.person}" />
-			<div>
-				<h3>
-					<h:outputText value="Name: " />
-				</h3>
-				<p:inputText id="Name" value="#{p.name}">
-					<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
-				</p:inputText>
-			</div>
 
-			<h3>
-				<h:outputText value="Mail: " />
-			</h3>
-			<p:inputText id="Mail" value="#{p.mail}">
-				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
-			</p:inputText>
-
-			<h3>
-				<h:outputText value="Web: " />
-			</h3>
-			<p:inputText id="Web" value="#{p.web}">
-				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
-			</p:inputText>
-
-			<h3>
-				<h:outputText value="First name: " />
-			</h3>
-			<p:inputText id="FirstName" value="#{p.firstname}">
-				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
-			</p:inputText>
-
-			<h3>
-				<h:outputText value="Birthday " />
-			</h3>
-			<p:inputText id="Birthday" value="#{p.birth}">
-				<p:ajax event="blur" listener="#{ConnectedController.saveCurrUser()}"/>
-			</p:inputText>
+			<p:panelGrid id="grid" columns="3">
+				<p:outputLabel for="Mail" value="Mail : " />
+				<p:outputLabel id="Mail" value="#{p.mail}"/>
+				<p:message for="Mail" />
+	
+				<p:outputLabel for="Name" value="Name : " />
+				<p:inputText id="Name" value="#{p.name}" required="true" requiredMessage="Please enter valid name" 
+								 validatorMessage="Please enter a valid name"/>
+				<p:message for="Name" />
+	
+				<p:outputLabel for="FirstName" value="FirstName : " />
+				<p:inputText id="FirstName" value="#{p.firstname}" required="true" requiredMessage="Please enter valid name"/>
+				<p:message for="FirstName" />
+	
+				<p:outputLabel for="Web" value="Web : " />
+				<p:inputText id="Web" value="#{p.web}" />
+				<p:message for="Web" />
+	
+				<p:outputLabel for="Birthday" value="Birthday : " />
+				<p:outputLabel id="Birthday" value="#{p.birth}"/>
+				<p:message for="Birthday" />
+				
+				<p:commandButton value="Submit" action="#{ConnectedController.saveCurrUser()}" update="grid"/>
+				<p:growl id="messages" showDetail="false"/>
+			</p:panelGrid>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>

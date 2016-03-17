@@ -12,21 +12,23 @@
 
 		<h1>Authentification</h1>
 		<h:form id="Authentification">
-
-				<h3><h:outputText value="Mail&#160;:" /></h3>
-				<div>
-					<h:inputText id="mail" value="#{LoginController.mail}" required="true">
+				<p:panelGrid id="grid" columns="3">
+				
+					<p:outputLabel for="mail" value="Mail&#160;:" />
+					<p:inputText id="mail" value="#{LoginController.mail}" required="true" requiredMessage="Please enter a valid mail" 
+								 validatorMessage="Please enter a valid mail">
 						<f:validateRegex pattern="^[a-z.0-9]+[a-z._0-9]+@[a-z]+[.]{1}[a-z]+$" />
-					</h:inputText>
-					<h:message errorClass="error" for="mail" />
-				</div>
-				<h3><h:outputText value="Password&#160;:" /></h3>
-				<div>
-					<p:password id="pwd" value="#{LoginController.pwd}" required="true"></p:password>
-					<h:message errorClass="error" for="pwd" />
-				</div>
-				<br/>
-				<h:commandButton value="Submit" action="#{LoginController.submit}"/>
+					</p:inputText>
+					<p:message for="mail" />
+					
+					<p:outputLabel for="pwd" value="Password&#160;:" />
+					<p:password id="pwd" value="#{LoginController.pwd}" required="true"
+								     requiredMessage="Please enter a valid password"/>
+					<p:message for="pwd" />
+
+					<p:commandButton value="Submit" action="#{LoginController.submit()}" update="grid"/>
+				    <p:growl id="messages" showDetail="false"/>
+				</p:panelGrid>
 
 		</h:form>
 
