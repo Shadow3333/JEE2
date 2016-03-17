@@ -9,24 +9,27 @@
 
 <ui:composition template="/template/mylayout.xhtml">
 	<ui:define name="content">
-	
 		<h2>Gestion de mes activités</h2>
-		<h:form>
+		<h:form id="form1">
 			<p:panelGrid id="grid" columns="3">
 				<p:outputLabel for="titre" value="Titre : " />
 				<p:inputText id="titre"
-					value="#{MyActivitiesController.activ.titre}">
-					<f:validateLength minimum="3" maximum="8" />
-				</p:inputText>
-				<h:message id="messageTitre" for="titre" />
+					value="#{MyActivitiesController.activ.titre}" 
+					required="true" requiredMessage="Please set a valid title" 
+					validatorMessage="Please enter a valid title"/>
+				<p:message id="messageTitre" for="titre" />
 				
 				<p:outputLabel for="description" value="Description : " />
 				<p:inputText id="description"
 					value="#{MyActivitiesController.activ.description}" />
 				<p:message id="messageDescription" for="description" />
 				
-				<p:outputLabel for="year" value="Year : " />
-				<p:inputText id="year" value="#{MyActivitiesController.activ.year}" />
+				<p:outputLabel for="year" value="Year (YYYY) : " />
+				<p:inputText id="year" value="#{MyActivitiesController.activ.year}" 
+					required="true" requiredMessage="Please set a valid Year" 
+					validatorMessage="Please enter a valid Year" >
+					<f:validateRegex pattern="^[0-9]{4}+$" />
+				</p:inputText>
 				<p:message id="messageYear" for="year" />
 				
 				<p:outputLabel for="web" value="Web : " />
@@ -39,17 +42,19 @@
 				</p:selectOneMenu>
 				<br/>
 				<p:commandButton value="Add"
-					action="#{MyActivitiesController.addActivities()}" update=":form2">
+					action="#{MyActivitiesController.addActivities()}" update=":form1 :form2">
 				</p:commandButton>
-				<br/>
+				<p:growl id="messages" showDetail="false"/>
 			</p:panelGrid>
 		</h:form>
 		<h:form id="form2">
+		<p:growl id="messages" showDetail="false"/>
 			<h:panelGroup is="panel" rendered="#{MyActivitiesController.getSize() > 0}">
 				<p:contextMenu for="table" widgetVar="cMenu">   
 			       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
 			       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()" />  
 			  	</p:contextMenu>
+			  	
 				<p:dataTable id="table" update="panel" var="activ" value="#{MyActivitiesController.ListActivities()}" editable="true" editMode="cell" widgetVar="cellCars">
 				
 					<p:ajax event="cellEdit" listener="#{MyActivitiesController.majActivitie(activ)}"/>
@@ -57,7 +62,11 @@
 					<p:column filterBy="#{activ.titre}" headerText="Titre">
 						<p:cellEditor>
 		                  <f:facet name="output"><h:outputText value="#{activ.titre}" /></f:facet>
-		                  <f:facet name="input"><p:inputText id="titre" value="#{activ.titre}" style="width:96%"/></f:facet>
+		                  <f:facet name="input">
+		                  	<p:inputText id="titre" value="#{activ.titre}" style="width:96%" 
+								required="true" requiredMessage="Please set a valid title" 
+								validatorMessage="Please enter a valid title"/>
+		                  </f:facet>
 		              </p:cellEditor>
 					</p:column>
 	
@@ -71,7 +80,13 @@
 					<p:column filterBy="#{activ.year}" headerText="Year">
 						<p:cellEditor>
 		                	<f:facet name="output"><h:outputText value="#{activ.year}" /></f:facet>
-		                	<f:facet name="input"><p:inputText id="year" value="#{activ.year}" style="width:96%"/></f:facet>
+		                	<f:facet name="input">
+		                		<p:inputText id="year" value="#{activ.year}" style="width:96%"
+									required="true" requiredMessage="Please set a valid Year" 
+									validatorMessage="Please enter a valid Year">
+									<f:validateRegex pattern="^[0-9]{4}+$" />
+								</p:inputText>
+		                	</f:facet>
 		              	</p:cellEditor>
 					</p:column>
 	

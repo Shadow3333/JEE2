@@ -25,8 +25,6 @@ public class LoginController {
     		reset();
     		return "hello";
 		}
-    	else
-    		System.out.println("nop");
         return null;
     }
     
